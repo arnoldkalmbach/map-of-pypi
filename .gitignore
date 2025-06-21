@@ -30,3 +30,4 @@ coverage
 *.geojson
 public/names
 public/graphs
+public/mock-data/raw_data

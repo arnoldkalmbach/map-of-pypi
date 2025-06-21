@@ -21,7 +21,7 @@ function closePanel() {
 }
 
 function getLink(repo) {
-  return 'https://github.com/' + repo.name;
+  return 'https://pypi.org/project/' + repo.name + '/';
 }
 
 </script>

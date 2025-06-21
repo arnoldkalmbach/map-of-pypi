@@ -1,7 +1,7 @@
 <script setup>
 import {ref, onBeforeUnmount, onBeforeMount, computed} from 'vue';
-import TypeAhead from './components/TypeAhead.vue';
-import GithubRepository from './components/GithubRepository.vue';
+import TypeAhead from './components/Typeahead.vue';
+import PypiPackage from './components/PypiPackage.vue';
 import SmallPreview from './components/SmallPreview.vue';
 import About from './components/About.vue';
 import UnsavedChanges from './components/UnsavedChanges.vue';
@@ -205,10 +205,10 @@ async function listCurrentConnections() {
       @selected="findProject"
       @close="closeFocusView()"
     ></focus-repository>
-    <github-repository :name="currentProject" v-if="currentProject" @listConnections="listCurrentConnections()"></github-repository>
+    <pypi-package :name="currentProject" v-if="currentProject" class="right-panel" @listConnections="listCurrentConnections()"></pypi-package>
     <form @submit.prevent="onSubmit" class="search-box" v-if="typeAheadVisible">
       <type-ahead
-        placeholder="Find Project"
+        placeholder="Find Package"
         @menuClicked='aboutVisible = true'
         @selected='findProject'
         @beforeClear='closeSideBarOnSmallScreen'

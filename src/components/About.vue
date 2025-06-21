@@ -27,7 +27,7 @@ onBeforeUnmount(() => {
 <template>
   <div>
     <div class='row'>
-      <h2>Map of GitHub</h2>
+      <h2>Map of PyPI</h2>
       <!-- Icon copyright (c) 2013-2017 Cole Bemis: https://github.com/feathericons/feather/blob/master/LICENSE -->
         <a href='#' @click.prevent='close' class='close-btn'>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
@@ -35,15 +35,15 @@ onBeforeUnmount(() => {
     </div>
     <div class="container">
       <p>
-        <img src="../../public/apple-touch-icon.png" alt="GitHub Map" class="map-image">
-        Each dot is a GitHub project. Two dots within the same cluster are 
-        usually close to each other if multiple users frequently gave stars to
-        both projects. The size of the dot indicates the number of stars the
-        project has received.
+        <img src="../../public/apple-touch-icon.png" alt="PyPI Map" class="map-image">
+        Each dot is a Python package published on PyPI. Two dots within the same "country" are
+        close to each other if their download patterns and declared dependencies significantly overlap.
+        The size of the dot indicates the number of downloads the package receives.
       </p>
       <p>
-        The map has approximately <b>690,000</b> projects, clustered into <b>1,500</b> countries. The map is build
-        based on 500 million stars given to GitHub projects between 2011 and end of April, 2025.
+        The mock map you are looking at contains just a handful of packages for demonstration purposes.
+        In the real release we will analyse tens of thousands of popular packages and cluster them based
+        on shared dependencies and usage statistics collected from the public download logs.
       </p>
       <h2>Map Versions</h2>
       <p>

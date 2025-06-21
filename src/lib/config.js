@@ -1,8 +1,10 @@
 const hostName = window.location.hostname;
+// In dev we serve everything from /mock-data/ folder. In production the data will be hosted as static assets
+// under map-of-pypi-data GitHub Pages site (adjust the URL when you decide on final hosting).
 const isDev = hostName !== 'anvaka.github.io';
-const server = isDev ? `http://${hostName}:8080/` : 'https://anvaka.github.io/map-of-github-data/';
+const server = isDev ? `${window.location.origin}/mock-data/` : 'https://your-username.github.io/map-of-pypi-data/';
 const params = new URLSearchParams(window.location.search);
-const version = params.get('v') || 'v2';
+const version = params.get('v') || 'v1';
 
 export default {
   serverUrl: '',
