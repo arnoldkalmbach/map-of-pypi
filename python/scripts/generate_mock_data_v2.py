@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import umap
 from sentence_transformers import SentenceTransformer
 from typing import Any
+from mock_data_export import export_mock_data
 
 # Parses the package name from a requires_dist string
 PACKAGE_RE = r"^\s*([A-Za-z0-9][-.\w]*(?:\[[A-Za-z0-9_\-.,]+\])?)"
@@ -97,5 +98,14 @@ if __name__ == "__main__":
     pos = nx.spring_layout(G, k=1, iterations=50, pos=initial_pos)
 
     print(f"Layout calculated for {len(pos)} nodes")
+
+    # Export dataset in mock-data structure via helper util
+    export_mock_data(
+        G,
+        pos,
+        nodes['name'].to_list(),
+        data_version='v2',
+    )
+
     plot = plot_graph(G, pos)
     

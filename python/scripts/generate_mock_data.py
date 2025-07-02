@@ -3,6 +3,9 @@ import re
 from pathlib import Path
 from typing import Dict, List, Tuple
 
+import networkx as nx
+from mock_data_export import export_mock_data_with_coords
+
 ROOT = Path(__file__).resolve().parent.parent
 RAW_DATA_FILE = ROOT / 'public' / 'mock-data' / 'raw_data' / '100_sci_packages.json'
 MOCK_V1_DIR = ROOT / 'public' / 'mock-data' / 'v1'
@@ -91,22 +94,26 @@ def main():
     pkgs = load_raw_packages()
     coords = assign_coordinates(pkgs)
 
-    # Ensure directories
-    NAMES_DIR.mkdir(parents=True, exist_ok=True)
-    GRAPHS_DIR.mkdir(parents=True, exist_ok=True)
+    # Build NetworkX graph (lowercase identifiers)
+    G = nx.DiGraph()
+    for pkg in pkgs:
+        G.add_node(pkg['name'].lower())
 
-    # Build and write graph
-    graph_str = build_graph(pkgs, coords)
-    (GRAPHS_DIR / '0.graph.dot').write_text(graph_str, encoding='utf-8')
+    for pkg in pkgs:
+        src = pkg['name'].lower()
+        for dep_raw in pkg.get('requires_dist', []):
+            dep = extract_dep_name(dep_raw)
+            if dep and dep in coords:
+                G.add_edge(src, dep)
 
-    # Build and write names files
-    letter_map = build_names(pkgs, coords)
-    for letter, arr in letter_map.items():
-        write_json(NAMES_DIR / f'{letter}.json', arr)
-
-    # Build and write places
-    places = build_places(coords)
-    write_json(MOCK_V1_DIR / 'places.geojson', places)
+    # Export using shared utility (writes graphs, names, places)
+    export_mock_data_with_coords(
+        G,
+        coords,
+        [p['name'] for p in pkgs],
+        data_version='v1',
+        root=ROOT,
+    )
 
     # Borders remain unchanged – we reuse the existing single-rectangle file.
 
