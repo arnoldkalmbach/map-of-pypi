@@ -3,6 +3,9 @@ import networkx as nx
 import numpy as np
 import re
 import matplotlib.pyplot as plt
+import umap
+from sentence_transformers import SentenceTransformer
+from typing import Any
 
 # Parses the package name from a requires_dist string
 PACKAGE_RE = r"^\s*([A-Za-z0-9][-.\w]*(?:\[[A-Za-z0-9_\-.,]+\])?)"
@@ -35,6 +38,15 @@ def plot_graph(G: nx.DiGraph, pos: dict[str, tuple[float, float]]):
     nx.draw(G, pos=pos, node_size=50, width=0.5, alpha=0.7, with_labels=True, ax=ax, node_color=node_colors, cmap=plt.cm.viridis)
     plt.show()
 
+def get_embeddings(descriptions: list[str], model_name: str) -> np.ndarray:
+    model = SentenceTransformer(model_name)
+    return model.encode(descriptions, show_progress_bar=True)
+
+
+def get_umap_embeddings(descriptions: list[str], umap_kwargs: dict[str, Any] = dict()) -> np.ndarray:
+    embeddings = get_embeddings(descriptions, model_name='all-MiniLM-L6-v2')
+    reducer = umap.UMAP(**umap_kwargs)
+    return reducer.fit_transform(embeddings).astype(float)
 
 
 if __name__ == "__main__":
@@ -60,6 +72,12 @@ if __name__ == "__main__":
     all_packages_with_edges = pl.concat((edges['name'], edges['requires_packages'])).unique()
     nodes = nodes.join(pl.DataFrame([all_packages_with_edges]), on='name')
 
+    print("Calculating embeddings...")
+    description_embeddings = get_umap_embeddings(
+        nodes['description'].to_list(),
+        umap_kwargs=dict(n_components=1)
+    )
+
     G = nx.DiGraph()
     G.add_nodes_from(nodes['name'])
 
@@ -71,12 +89,12 @@ if __name__ == "__main__":
     print(f"Graph created with {G.number_of_nodes()} nodes and {G.number_of_edges()} edges")
 
     print("Calculating layout...")
-    # Initialize the nodes in a vertical line, from most depended to least depended
-    # Add some random noise to the x-coordinate to break symmetry for the layout algorithm
+    # Initialize the nodes where the y-coordinate is the number of depending packages
+    # And the x-coordinate is the embedding of the package description
     initial_pos = {
-        node: (np.random.normal(scale=.01), G.in_degree(node)) for i, node in enumerate(G.nodes())
+        node: (description_embeddings[i, 0], G.in_degree(node)) for i, node in enumerate(G.nodes())
     }
-    pos = nx.spring_layout(G, k=1, iterations=100, pos=initial_pos)
+    pos = nx.spring_layout(G, k=1, iterations=50, pos=initial_pos)
 
     print(f"Layout calculated for {len(pos)} nodes")
     plot = plot_graph(G, pos)
