@@ -298,8 +298,8 @@ function getDefaultStyle() {
   return {
     hash: true,
     container: "map",
-    center: [0, 0],
-    zoom: 2,
+    center: [-122.4, 37.8],
+    zoom: 7,
     style: {
       version: 8,
       glyphs: config.glyphsSource,
@@ -308,9 +308,9 @@ function getDefaultStyle() {
         "points-source": {
           type: "vector",
           tiles: [config.vectorTilesTiles],
-          minzoom: 4,
-          maxzoom: 7,
-          center: [-9.843750,4.213679,7],
+          minzoom: 7,
+          maxzoom: 16,
+          center: [-122.4, 37.8, 7],
         },
         "place": { // this one loaded asynchronously, and merged with local storage data
           type: "geojson",
@@ -341,19 +341,8 @@ function getDefaultStyle() {
           "source": "borders-source",
           "filter": ["==", "$type", "Polygon"],
           "paint": {
-            "fill-color": colorStyle
-          }
-        },
-        {
-          "id": "border-highlight",
-          "type": "line",
-          "source": "borders-source",
-          "layout": {
-            "visibility": "none"
-          },
-          "paint": {
-            "line-color": "#FFF",
-            "line-width": 4,
+            "fill-color": colorStyle,
+            "fill-opacity": 0.3  // Add transparency so packages are visible
           }
         },
         {
@@ -387,6 +376,18 @@ function getDefaultStyle() {
               5,  ["*", ["get", "size"], .1],
               23, ["*", ["get", "size"], 1.5],
             ]
+          }
+        },
+        {
+          "id": "border-highlight",
+          "type": "line",
+          "source": "borders-source",
+          "layout": {
+            "visibility": "none"
+          },
+          "paint": {
+            "line-color": "#FFF",
+            "line-width": 4,
           }
         },
         {

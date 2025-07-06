@@ -95,7 +95,7 @@ if __name__ == "__main__":
     initial_pos = {
         node: (description_embeddings[i, 0], G.in_degree(node)) for i, node in enumerate(G.nodes())
     }
-    pos = nx.spring_layout(G, k=1, iterations=50, pos=initial_pos)
+    pos = nx.spring_layout(G, k=1, iterations=100, pos=initial_pos)
 
     print(f"Layout calculated for {len(pos)} nodes")
 
