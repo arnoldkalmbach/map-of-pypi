@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Sequence
 import json
+import math
 import networkx as nx
 from networkx.drawing.nx_pydot import write_dot
 import subprocess
@@ -76,7 +77,8 @@ def _export_names(
         lname = name.lower()
         lon, lat = coords.get(lname, (None, None))
         if lon is None:
-            continue  # safety – skip names not found in coords
+            # Skip names not found in coords
+            continue
         first = lname[0]
         letter_map.setdefault(first, []).append([name, lon, lat])
 
@@ -99,9 +101,14 @@ def _create_packages_gdf(
             
         lon, lat = coords[lname]
 
+        # Calculate size based on in-degree (number of packages that depend on this one)
+        # Scale it to a reasonable range (1-20) for visualization
+        in_degree = G.in_degree(lname)
+        size = max(1, min(20, int(in_degree * 0.5 + 3)))
+        
         data.append({
             'label': name,
-            'size': 5, # Default size
+            'size': size,
             'parent': 0,  # All packages in group 0 for now
             'geometry': Point(lon, lat)
         })
@@ -141,7 +148,7 @@ def _calculate_zoom_levels(minx: float, miny: float, maxx: float, maxy: float, m
     
     # Set max zoom to be high enough for detailed viewing
     # For package maps, zoom 16 should be more than enough
-    max_zoom_final = min(16, max_zoom)
+    max_zoom_final = min(12, max_zoom)
     
     # Ensure we have at least a few zoom levels
     if max_zoom_final <= min_zoom:
@@ -155,7 +162,6 @@ def _generate_vector_tiles(
     package_names: Sequence[str],
     G: nx.DiGraph,
     output_dir: Path,
-    names_dir: Path,
 ) -> None:
     """Generate vector tiles using tippecanoe."""
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -186,12 +192,6 @@ def _generate_vector_tiles(
         json.dump(metadata, f, indent=2)
     print(f"Exported metadata to {metadata_path}")
     
-    # DEBUG: Check if calculated zoom levels are reasonable
-    if min_zoom > 16:
-        print(f"WARNING: Calculated min_zoom ({min_zoom}) is very high!")
-    if max_zoom < 4:
-        print(f"WARNING: Calculated max_zoom ({max_zoom}) is very low!")
-    
     # Write to temporary GeoJSON file
     with tempfile.NamedTemporaryFile(mode='w', suffix='.geojson', delete=False) as f:
         temp_geojson = f.name
@@ -199,23 +199,24 @@ def _generate_vector_tiles(
     # Export to GeoJSON
     gdf.to_file(temp_geojson, driver='GeoJSON')
     print(f"Exported GeoJSON to {temp_geojson}")
+
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.mbtiles', delete=False) as f:
+        temp_mbtiles = f.name
     
-    try:
-        # Remove existing tiles first since --force isn't working
-        mbtiles_path = output_dir / "tiles.mbtiles"
-        if mbtiles_path.exists():
-            mbtiles_path.unlink()
-            print(f"Removed existing {mbtiles_path}")
-        
-        # Generate mbtiles using tippecanoe
+    try:        
+        # Generate mbtiles using tippecanoe with options to handle sparse data
         cmd = [
             "tippecanoe",
-            "-o", str(mbtiles_path),
+            "-o", str(temp_mbtiles),
             "--layer=points",
             f"--minimum-zoom={min_zoom}",
             f"--maximum-zoom={max_zoom}",
-            "--drop-densest-as-needed",
-            "--extend-zooms-if-still-dropping",
+            "--no-feature-limit",
+            "--no-tile-size-limit",
+            "--buffer=64",
+            "--force",  # Overwrite existing files
+            "--hilbert",  # Better spatial distribution
+            "--drop-rate=0",  # Don't drop any features
             temp_geojson
         ]
         
@@ -240,7 +241,8 @@ def _generate_vector_tiles(
             "tile-join",
             "--no-tile-compression",
             "--output-to-directory=" + str(output_dir),
-            str(mbtiles_path)
+            "--force",
+            str(temp_mbtiles)
         ]
         
         print(f"Running tile-join command: {' '.join(extract_cmd)}")
@@ -251,31 +253,19 @@ def _generate_vector_tiles(
             print(f"Tile-join stdout: {result.stdout}")
             raise subprocess.CalledProcessError(result.returncode, extract_cmd)
         
-        # Clean up mbtiles file
-        mbtiles_path.unlink()
-        
         print(f"Vector tiles generated successfully at {output_dir}")
-        
-        # Update names files with actual coordinates from the tiles
-        print("Updating names files with actual tile coordinates...")
-        _update_names_with_actual_coords(package_names, temp_geojson, names_dir)
-        print("Names files updated with actual coordinates")
-        
-        # List what was actually generated
-        print("Generated tile structure:")
-        for item in output_dir.rglob("*"):
-            if item.is_file():
-                print(f"  {item.relative_to(output_dir)}")
         
     except subprocess.CalledProcessError as e:
         print(f"Error generating vector tiles: {e}")
         print("Make sure tippecanoe is installed and in PATH")
     except FileNotFoundError:
-        print("tippecanoe not found. Install with: sudo apt-get install tippecanoe")
+        print("tippecanoe not found. Install with: sudo apt install tippecanoe")
     finally:
         # Clean up temporary file
         if os.path.exists(temp_geojson):
             os.unlink(temp_geojson)
+        if os.path.exists(temp_mbtiles):
+            os.unlink(temp_mbtiles)
 
 
 def _create_borders_gdf(coords: dict[str, tuple[float, float]]) -> gpd.GeoDataFrame:
@@ -350,6 +340,8 @@ def _export_places(coords: dict[str, tuple[float, float]], out_path: Path) -> No
 def _create_borders_geojson(coords: dict[str, tuple[float, float]], out_path: Path) -> None:
     """Create borders.geojson that encompasses all package coordinates."""
     gdf = _create_borders_gdf(coords)
+    # Add explicit ID column that geopandas will use as feature ID
+    gdf['id'] = gdf.index
     gdf.to_file(out_path, driver='GeoJSON')
 
 
@@ -388,108 +380,23 @@ def export_mock_data(
     names_dir.mkdir(parents=True, exist_ok=True)
     graphs_dir.mkdir(parents=True, exist_ok=True)
 
-    # 1. Remap layout positions → geographic coords
+    # Take arbitrary XY coords and map them to possible lon/lat coords
     coords = _remap_positions_to_bbox(pos, bbox or (MIN_LON, MAX_LON, MIN_LAT, MAX_LAT))
 
-    # 2. Graph
+    # Save the dot graph: Used for rendering edges
     _export_graph(G, coords, graphs_dir / "0.graph.dot")
 
-    # 3. Names search index
+    # Save the names json files: Used for searching
     _export_names(package_names, coords, names_dir)
 
-    # 4. Places (centroid)
+    # Save the places geojson file: Identifies the centroid of each cluster ('country')
+    # For now, we just have a single cluster in the map
     _export_places(coords, mock_dir / "places.geojson")
 
-    # 5. Vector tiles
-    _generate_vector_tiles(coords, package_names, G, mock_dir / "points", names_dir)
-
-    # 6. Borders
+    # Save the borders geojson file: Used for rendering the boundaries of each cluster
+    # For now we just have a single cluster, so this is the min, max, lon, lat extent
     _create_borders_geojson(coords, mock_dir / "borders.geojson")
 
-    relative = mock_dir.relative_to(root)
-    print(f"Mock data exported to {relative} (graphs, names, places, vector tiles, borders)")
-
-
-
-
-def export_mock_data_with_coords(
-    G: nx.DiGraph,
-    coords: dict[str, tuple[float, float]],
-    package_names: Sequence[str],
-    *,
-    data_version: str = "v1",
-    root: Path | None = None,
-) -> None:
-    """Same as `export_mock_data`, but skips coordinate remapping.
-
-    Parameters
-    ----------
-    G : nx.DiGraph
-        Graph whose nodes already correspond to *lowercase* package names.
-    coords : mapping name -> (lon, lat)
-        Pre-computed geographic coordinates.
-    package_names : sequence[str]
-        Original-case names for the search index.
-    data_version : str
-        Target sub-directory (e.g. "v1").
-    root : Path | None
-        Repository root. Inferred if omitted.
-    """
-
-    if root is None:
-        root = Path(__file__).resolve().parents[2]
-
-    mock_dir = root / "public" / "mock-data" / data_version
-    names_dir = mock_dir / "names"
-    graphs_dir = mock_dir / "graphs"
-    names_dir.mkdir(parents=True, exist_ok=True)
-    graphs_dir.mkdir(parents=True, exist_ok=True)
-
-    # Graph (coords already final)
-    _export_graph(G, coords, graphs_dir / "0.graph.dot")
-
-    # Names search index
-    _export_names(package_names, coords, names_dir)
-
-    # Places geojson
-    _export_places(coords, mock_dir / "places.geojson")
-
-    # 5. Vector tiles
-    _generate_vector_tiles(coords, package_names, G, mock_dir / "points", names_dir)
-
-    # 6. Borders
-    _create_borders_geojson(coords, mock_dir / "borders.geojson")
-
-    print(f"Mock data exported to {mock_dir.relative_to(root)} (graphs, names, places, vector tiles, borders)")
-
-
-def _update_names_with_actual_coords(
-    package_names: Sequence[str],
-    temp_geojson: str,
-    names_dir: Path,
-) -> None:
-    """Update names files with actual coordinates from the GeoJSON used for tiles."""
-    # Read the actual coordinates from the temporary GeoJSON file
-    gdf = gpd.read_file(temp_geojson)
-    
-    # Create a mapping from package name to actual coordinates
-    actual_coords = {}
-    for _, row in gdf.iterrows():
-        geom = row['geometry']
-        if geom and hasattr(geom, 'coords'):
-            lon, lat = geom.coords[0]
-            actual_coords[row['label'].lower()] = (lon, lat)
-    
-    # Update the names files with actual coordinates
-    letter_map: dict[str, list] = {}
-    for name in package_names:
-        lname = name.lower()
-        coords = actual_coords.get(lname)
-        if coords is None:
-            continue  # skip names not found in actual coords
-        lon, lat = coords
-        first = lname[0]
-        letter_map.setdefault(first, []).append([name, lon, lat])
-
-    for letter, arr in letter_map.items():
-        (names_dir / f"{letter}.json").write_text(json.dumps(arr, indent=2), encoding="utf-8") 
+    # Save the coordinates of each indivdual node as PBF features
+    # Used for rendering the packages (when you zoom in enough) 
+    _generate_vector_tiles(coords, package_names, G, mock_dir / "points")
