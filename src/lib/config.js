@@ -11,7 +11,7 @@ export default {
   // vectorTilesSource: 'http://192.168.86.79:8082/data/cities.json',
   vectorTilesTiles: `${server}${version}/points/{z}/{x}/{y}.pbf`,
   vectorTilesMetadata: `${server}${version}/points/metadata.json`,
-  glyphsSource: `${server}/fonts/{fontstack}/{range}.pbf`,
+  glyphsSource: `${server}fonts/{fontstack}/{range}.pbf`,
   bordersSource: `${server}${version}/borders.geojson`,
   placesSource: `${server}${version}/places.geojson`,
 

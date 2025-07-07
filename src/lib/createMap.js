@@ -197,10 +197,19 @@ export default function createMap() {
   }
 
   function drawBackgroundEdges(point, repo, ignoreExternal = true) {
+    console.log('drawBackgroundEdges called with:', {point, repo, ignoreExternal});
     const bgFeature = getBackgroundNearPoint(point);
-    if (!bgFeature) return;
+    console.log('bgFeature found:', bgFeature);
+    if (!bgFeature) {
+      console.log('No background feature found - edges will not render');
+      return;
+    }
     const groupId = bgFeature.id;
-    if (groupId === undefined) return;
+    console.log('groupId:', groupId);
+    if (groupId === undefined) {
+      console.log('groupId is undefined - edges will not render');
+      return;
+    }
 
     const fillColor = getPolygonFillColor(bgFeature.properties);
     let complimentaryColor = getComplimentaryColor(fillColor);
@@ -212,7 +221,9 @@ export default function createMap() {
       features: []
     };
 
+    console.log('Downloading graph for groupId:', groupId);
     backgroundEdgesFetch = downloadGroupGraph(groupId).then(groupGraph => {
+      console.log('Graph downloaded:', groupGraph);
       if (isCancelled) return;
       let firstLevelLinks = [];
       let primaryNodePosition;
@@ -302,14 +313,13 @@ function getDefaultStyle() {
     zoom: 7,
     style: {
       version: 8,
-      glyphs: config.glyphsSource,
       sources: {
         "borders-source": { type: "geojson", data: config.bordersSource, },
         "points-source": {
           type: "vector",
           tiles: [config.vectorTilesTiles],
           minzoom: 7,
-          maxzoom: 16,
+          maxzoom: 12,
           center: [-122.4, 37.8, 7],
         },
         "place": { // this one loaded asynchronously, and merged with local storage data
@@ -357,7 +367,7 @@ function getDefaultStyle() {
               "interpolate",
               ["linear"],
               ["zoom"],
-              5, 0.1,
+              5, 0.4,
               15, 0.9
             ],
             "circle-stroke-color": currentColorTheme.circleStrokeColor,
@@ -366,15 +376,15 @@ function getDefaultStyle() {
               "interpolate",
               ["linear"],
               ["zoom"],
-              8, 0.0,
+              7, 0.3,
               15, 0.9
             ],
             "circle-radius": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              5,  ["*", ["get", "size"], .1],
-              23, ["*", ["get", "size"], 1.5],
+              5,  ["*", ["get", "size"], 0.8],
+              23, ["*", ["get", "size"], 2.5],
             ]
           }
         },
@@ -390,34 +400,34 @@ function getDefaultStyle() {
             "line-width": 4,
           }
         },
-        {
-          "id": "label-layer",
-          "type": "symbol",
-          "source": "points-source",
-          "source-layer": "points",
-          "filter": [">=", ["zoom"], 8],
-          "layout": {
-            "text-font": [ "Roboto Condensed Regular" ],
-            "text-field": ["slice", ["get", "label"], ["+", ["index-of", "/", ["get", "label"]], 1]],
-            "text-anchor": "top",
-            "text-max-width": 10,
-            "symbol-sort-key": ["-", 0, ["get", "size"]],
-            "symbol-spacing": 500,
-            "text-offset": [0, 0.5],
-            "text-size": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              8,  ["/", ["get", "size"], 4],
-              10, ["+", ["get", "size"], 8]
-            ],
-          },
-          "paint": {
-            "text-color": currentColorTheme.circleLabelsColor,
-            "text-halo-color": currentColorTheme.circleLabelsHaloColor,
-            "text-halo-width": currentColorTheme.circleLabelsHaloWidth,
-          },
-        }, 
+        // {
+        //   "id": "label-layer",
+        //   "type": "symbol",
+        //   "source": "points-source",
+        //   "source-layer": "points",
+        //   "filter": [">=", ["zoom"], 8],
+        //   "layout": {
+        //     "text-font": [ "Open Sans", "Arial" ],
+        //     "text-field": ["get", "label"],
+        //     "text-anchor": "top",
+        //     "text-max-width": 10,
+        //     "symbol-sort-key": ["-", 0, ["get", "size"]],
+        //     "symbol-spacing": 500,
+        //     "text-offset": [0, 0.5],
+        //     "text-size": [
+        //       "interpolate",
+        //       ["linear"],
+        //       ["zoom"],
+        //       8,  ["+", ["*", ["get", "size"], 0.3], 8],
+        //       10, ["+", ["*", ["get", "size"], 0.5], 12]
+        //     ],
+        //   },
+        //   "paint": {
+        //     "text-color": currentColorTheme.circleLabelsColor,
+        //     "text-halo-color": currentColorTheme.circleLabelsHaloColor,
+        //     "text-halo-width": currentColorTheme.circleLabelsHaloWidth,
+        //   },
+        // }, 
         {
           "id": "selected-nodes-layer",
           "type": "circle",
@@ -426,75 +436,75 @@ function getDefaultStyle() {
             "circle-color": ["get", "color"],
           }
         },
-        {
-          "id": "selected-nodes-labels-layer",
-          "type": "symbol",
-          "source": "selected-nodes",
-          "layout": {
-            "text-font": [ "Roboto Condensed Regular" ],
-            "text-field": ["get", "name"],
-            "text-anchor": "top",
-            "text-max-width": 10,
-            "symbol-sort-key": ["-", 0, ["get", "textSize"]],
-            "symbol-spacing": 500,
-            "text-offset": [0, 0.5],
-            "text-size": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              8, ["/", ["get", "size"], 4],
-              10, ["+", ["get", "size"], 8]
-            ],
-          },
-          "paint": {
-            "text-color": "#fff",
-            "text-halo-color": ["get", "color"],
-            "text-halo-width": 2,
-          },
-        },
+        // {
+        //   "id": "selected-nodes-labels-layer",
+        //   "type": "symbol",
+        //   "source": "selected-nodes",
+        //   "layout": {
+        //     "text-font": [ "Open Sans", "Arial" ],
+        //     "text-field": ["get", "name"],
+        //     "text-anchor": "top",
+        //     "text-max-width": 10,
+        //     "symbol-sort-key": ["-", 0, ["get", "textSize"]],
+        //     "symbol-spacing": 500,
+        //     "text-offset": [0, 0.5],
+        //     "text-size": [
+        //       "interpolate",
+        //       ["linear"],
+        //       ["zoom"],
+        //       8, ["/", ["get", "size"], 4],
+        //       10, ["+", ["get", "size"], 8]
+        //     ],
+        //   },
+        //   "paint": {
+        //     "text-color": "#fff",
+        //     "text-halo-color": ["get", "color"],
+        //     "text-halo-width": 2,
+        //   },
+        // },
         // TODO: move labels stuff to label editor?
-{
-    "id": "place-country-1",
-    // minzoom: 1, 
-    "maxzoom": 10,
-    "type": "symbol",
-    "source": "place",
-    "layout": {
-        "text-font": [ "Roboto Condensed Bold" ],
-        "text-size": [
-          "interpolate",
-          [ "cubic-bezier", 0.2, 0, 0.7, 1 ],
-          ["zoom"],
-          1, [
-            "step",
-            ["get", "symbolzoom"], 15, 
-            4, 13, 
-            5, 12
-          ],
-          9, [
-            "step",
-            ["get", "symbolzoom"], 22,
-            4, 19,
-            5, 17
-          ]
-        ],
-        "symbol-sort-key": ["get", "symbolzoom"],
-        "text-field": "{name}",
-        "text-max-width": 6,
-        "text-line-height": 1.1,
-        "text-letter-spacing": 0,
-    },
-    "paint": {
-      "text-color": currentColorTheme.placeLabelsColor,
-      "text-halo-color": currentColorTheme.placeLabelsHaloColor,
-      "text-halo-width": currentColorTheme.placeLabelsHaloWidth,
-    },
-    "filter": [
-        "<=",
-        ["get", "symbolzoom"],
-        ["+", ["zoom"], 4]
-      ],
-},
+// {
+//     "id": "place-country-1",
+//     // minzoom: 1, 
+//     "maxzoom": 10,
+//     "type": "symbol",
+//     "source": "place",
+//     "layout": {
+//         "text-font": [ "Open Sans", "Arial" ],
+//         "text-size": [
+//           "interpolate",
+//           [ "cubic-bezier", 0.2, 0, 0.7, 1 ],
+//           ["zoom"],
+//           1, [
+//             "step",
+//             ["get", "symbolzoom"], 15, 
+//             4, 13, 
+//             5, 12
+//           ],
+//           9, [
+//             "step",
+//             ["get", "symbolzoom"], 22,
+//             4, 19,
+//             5, 17
+//           ]
+//         ],
+//         "symbol-sort-key": ["get", "symbolzoom"],
+//         "text-field": "{name}",
+//         "text-max-width": 6,
+//         "text-line-height": 1.1,
+//         "text-letter-spacing": 0,
+//     },
+//     "paint": {
+//       "text-color": currentColorTheme.placeLabelsColor,
+//       "text-halo-color": currentColorTheme.placeLabelsHaloColor,
+//       "text-halo-width": currentColorTheme.placeLabelsHaloWidth,
+//     },
+//     "filter": [
+//         "<=",
+//         ["get", "symbolzoom"],
+//         ["+", ["zoom"], 4]
+//       ],
+// },
       ]
     },
   };

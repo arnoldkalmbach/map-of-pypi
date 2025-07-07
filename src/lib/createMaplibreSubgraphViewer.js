@@ -10,7 +10,6 @@ const currentColorTheme = getColorTheme();
 // Default map style configuration for subgraph viewer
 const mapStyle = {
   version: 8,
-  glyphs: config.glyphsSource,
   sources: {
     // No external sources needed initially
   },
@@ -174,7 +173,7 @@ export function createMaplibreSubgraphViewer(subgraphInfo) {
       source: 'nodes',
       layout: {
         'text-field': ['get', 'label'],
-        'text-font': ['Roboto Condensed Regular'],
+        'text-font': ['Open Sans', 'Arial'],
         'text-anchor': 'top',
         'text-max-width': 10,
         'symbol-sort-key': ['-', 0, ['get', 'size']],
@@ -202,7 +201,7 @@ export function createMaplibreSubgraphViewer(subgraphInfo) {
       source: 'selected-nodes',
       layout: {
         'text-field': ['get', 'name'],
-        'text-font': ['Roboto Condensed Regular'],
+        'text-font': ['Open Sans', 'Arial'],
         'text-anchor': 'top',
         'text-max-width': 10,
         'symbol-sort-key': ['-', 0, ['get', 'textSize']],
