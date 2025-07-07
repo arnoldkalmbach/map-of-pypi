@@ -1,11 +1,15 @@
 {
-  "minzoom": 7,
-  "maxzoom": 16,
-  "bounds": [
-    -122.55,
-    37.65,
-    -122.25,
-    37.95
-  ],
-  "package_count": 345
+"name": "/tmp/tmp2yx2wzfx.mbtiles",
+"description": "/tmp/tmp2yx2wzfx.mbtiles",
+"version": "2",
+"minzoom": "7",
+"maxzoom": "12",
+"center": "-122.387695,37.822794,12",
+"bounds": "-122.607422,37.579413,-122.167969,37.996163",
+"antimeridian_adjusted_bounds": "-122.607422,37.579413,-122.167969,37.996163",
+"type": "overlay",
+"format": "pbf",
+"generator": "tile-join v2.49.0",
+"generator_options": "tippecanoe -o /tmp/tmp2yx2wzfx.mbtiles '--layer=points' '--minimum-zoom=7' '--maximum-zoom=12' --no-feature-limit --no-tile-size-limit '--buffer=64' --force --hilbert '--drop-rate=0' /tmp/tmpz_7g8q9z.geojson; tile-join --no-tile-compression '--output-to-directory=/home/arnold/Projects/map-of-pypi/public/mock-data/v2/points' --force /tmp/tmp2yx2wzfx.mbtiles",
+"json": "{\"vector_layers\":[{\"id\":\"points\",\"description\":\"\",\"minzoom\":7,\"maxzoom\":12,\"fields\":{\"label\":\"String\",\"parent\":\"Number\",\"size\":\"Number\"}}],\"tilestats\":{\"layerCount\":1,\"layers\":[{\"layer\":\"points\",\"count\":27218,\"geometry\":\"Point\",\"attributeCount\":3,\"attributes\":[{\"attribute\":\"label\",\"count\":1000,\"type\":\"string\",\"values\":[\"3lc\",\"aaindex\",\"abess\",\"ablog\",\"accelerate\",\"accelerator-toolbox\",\"access\",\"acryl-great-expectations\",\"acryl-sqlglot\",\"adaptive\",\"adaptive-classifier\",\"adversarial-robustness-toolbox\",\"aemcmc-nightly\",\"aeon\",\"aeppl\",\"aeppl-nightly\",\"aequilibrae\",\"aesara\",\"affine\",\"agate\",\"agate-dbf\",\"agate-excel\",\"agate-sql\",\"ai-api-client-sdk\",\"ai-core-sdk\",\"ai-edge-litert\",\"ai-edge-litert-nightly\",\"ai-edge-quantizer-nightly\",\"ai-edge-torch\",\"ai-edge-torch-nightly\",\"ai2thor\",\"aicsimageio\",\"aif360\",\"aigverse\",\"aiida-pythonjob\",\"aksharamukha\",\"albucore\",\"albumentations\",\"alchemlyb\",\"ale-py\",\"alibi\",\"allennlp\",\"allennlp-pvt-nightly\",\"alpaca-eval\",\"alpaqa\",\"alphashape\",\"altair\",\"altair-data-server\",\"altair-saver\",\"altair-viewer\",\"amalgam-lang\",\"amazon-braket-sdk\",\"amplify\",\"anndata\",\"anndata2ri\",\"ansys-dpf-core\",\"ansys-dpf-post\",\"ansys-dyna-core\",\"ansys-edb-core\",\"ansys-fluent-core\",\"ansys-geometry-core\",\"ansys-grantami-bomanalytics\",\"ansys-grantami-bomanalytics-openapi\",\"ansys-grantami-serverapi-openapi\",\"ansys-hps-client\",\"ansys-mapdl-core\",\"ansys-mapdl-reader\",\"ansys-mechanical-core\",\"ansys-motorcad-core\",\"ansys-openapi-common\",\"ansys-optislang-core\",\"ansys-pyensight-core\",\"ansys-tools-visualization-interface\",\"ansys-units\",\"antropy\",\"apollo-fpga\",\"aqlm\",\"aqtp\",\"arcgis\",\"arcgis-mapping\",\"archspec\",\"arkas\",\"arm-pyart\",\"art\",\"artistools\",\"arviz\",\"arxiv2text\",\"aryaxai\",\"asdf-coordinates-schemas\",\"ase\",\"asteval\",\"astropy\",\"astropy-healpix\",\"astroquery\",\"astrowisp\",\"async-retriever\",\"asyncer\",\"atlassian-python-api\",\"atomate2\",\"audeer\"]},{\"attribute\":\"parent\",\"count\":1,\"type\":\"number\",\"values\":[0],\"min\":0,\"max\":0},{\"attribute\":\"size\",\"count\":18,\"type\":\"number\",\"values\":[10,11,12,13,14,15,16,17,18,19,20,3,4,5,6,7,8,9],\"min\":3,\"max\":20}]}]}}"
 }

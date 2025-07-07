@@ -1,0 +1,1203 @@
+¸™x
+points(Ä labelsizeparent"
+h3"
+t5"
+yt"
+3lc"
+ase"
+cma"
+ert"
+itk"
+jmp"
+mlr"
+mne"
+ogb"
+sax"
+uhi"
+utm"
+vtk"
+xee"
+ydf"
+aeon"
+aqlm"
+aqtp"
+chex"
+cirq"
+cons"
+crds"
+cupy"
+daal"
+daft"
+dash"
+dask"
+dcor"
+dill"
+dipy"
+dspy"
+epix"
+esda"
+feyn"
+flax"
+h5py"
+hdmf"
+hist"
+iden"
+ipfn"
+jina"
+jwst"
+kili"
+lapx"
+mgwr"
+mink"
+nltk"
+peft"
+ppft"
+pyhf"
+pykx"
+pymc"
+pyts"
+pyvo"
+ranx"
+rpy2"
+sgp4"
+shap"
+silx"
+skrl"
+smac"
+soxr"
+spin"
+supy"
+tika"
+timm"
+tsdb"
+vllm"
+xrft"
+zarr"
+zfit"
+aeppl"
+alibi"
+arkas"
+arviz"
+blosc"
+bokeh"
+cmaes"
+coacd"
+cobra"
+coola"
+cymem"
+dclab"
+divik"
+dolma"
+drake"
+eland"
+emcee"
+etils"
+fabio"
+fiona"
+flopy"
+g2pkk"
+gdstk"
+gmpy2"
+grizz"
+hanlp"
+kafe2"
+keras"
+kneed"
+matgl"
+mocpy"
+musdb"
+mxnet"
+nlopt"
+numpy"
+omega"
+opsml"
+optax"
+osmnx"
+panel"
+param"
+patsy"
+pgmpy"
+pooch"
+pyamg"
+pydlm"
+pydot"
+pyedb"
+pyfai"
+pygad"
+pymoo"
+pynwb"
+pyocd"
+pyomo"
+pyscf"
+pyusb"
+pyzmq"
+qutip"
+rdata"
+ropwr"
+rtree"
+scann"
+scipp"
+scipy"
+skops"
+skpro"
+skrub"
+spacy"
+spglm"
+spopt"
+spreg"
+srsly"
+stcal"
+thinc"
+torch"
+vispy"
+wandb"
+weave"
+wfsim"
+xclim"
+xtgeo"
+zenml"
+access"
+aesara"
+affine"
+aif360"
+ale-py"
+altair"
+augmax"
+beyond"
+blosc2"
+boxmot"
+bqplot"
+cachey"
+captum"
+casadi"
+cdflib"
+chgnet"
+cornac"
+cvxopt"
+detkit"
+effdet"
+einops"
+funasr"
+galois"
+gensim"
+geomdl"
+haliax"
+hankel"
+healpy"
+hvplot"
+icclim"
+igraph"
+imgaug"
+ipylab"
+ipympl"
+ipyvue"
+itk-io"
+jaxopt"
+jcloud"
+joblib"
+kmodes"
+kolena"
+kornia"
+kserve"
+lineax"
+lingvo"
+linopy"
+magika"
+marimo"
+meshio"
+mlflow"
+momepy"
+mpi4py"
+mplhep"
+mpmath"
+mudata"
+mujoco"
+napari"
+nbdime"
+ndcube"
+nipype"
+opacus"
+optree"
+optuna"
+pandas"
+patato"
+polars"
+preliz"
+py-pde"
+py3dep"
+pyaedt"
+pybamm"
+pybids"
+pydeck"
+pyerfa"
+pygdal"
+pygeos"
+pygrib"
+pygsti"
+pyhdfe"
+pykeen"
+pypots"
+pyproj"
+pysiaf"
+pytket"
+qbraid"
+qcodes"
+qiskit"
+qrules"
+qulacs"
+rfdetr"
+scanpy"
+scooby"
+scprep"
+segyio"
+sionna"
+sktime"
+sparse"
+spglib"
+spyder"
+stumpy"
+sweeps"
+ta-lib"
+tabicl"
+tables"
+tabpfn"
+taichi"
+texext"
+tiledb"
+tobler"
+traits"
+uproot"
+vector"
+weasel"
+xarray"
+xpress"
+xradar"	
+anndata"	
+antropy"	
+astropy"	
+asyncer"	
+awkward"	
+basemap"	
+bentoml"	
+biotite"	
+biotraj"	
+bnlearn"	
+botorch"	
+chonkie"	
+clearml"	
+cogent3"	
+cytoolz"	
+datamol"	
+dice-ml"	
+diffrax"	
+distrax"	
+dm-tree"	
+docling"	
+docplex"	
+docrepr"	
+dspy-ai"	
+equinox"	
+etuples"	
+fastjet"	
+fugashi"	
+gamsapi"	
+geffnet"	
+giskard"	
+gstools"	
+hana-ml"	
+hdbscan"	
+hfutils"	
+hub-sdk"	
+imageio"	
+ipygany"	
+ipython"	
+ipytree"	
+jobflow"	
+jupyter"	
+kaldiio"	
+karbonn"	
+kwimage"	
+lancedb"	
+louvain"	
+matchms"	
+mrcfile"	
+museval"	
+natsort"	
+neptune"	
+nibabel"	
+nilearn"	
+numexpr"	
+numpyro"	
+openllm"	
+optimum"	
+ortools"	
+paddlex"	
+pandera"	
+plotbin"	
+preshed"	
+pyagrum"	
+pyglove"	
+pylance"	
+pyogrio"	
+pyvista"	
+regions"	
+seaborn"	
+shapely"	
+sidecar"	
+snorkel"	
+sqlglot"	
+squidpy"	
+stempeg"	
+tbparse"	
+textacy"	
+tf2onnx"	
+tfx-bsl"	
+tmtools"	
+torchrl"	
+traceml"	
+tsfresh"	
+u8darts"	
+uproot3"	
+whylogs"
+
+adaptive"
+
+allennlp"
+
+atomate2"
+
+autograd"
+
+avaframe"
+
+blackjax"
+
+catalyst"
+
+cirq-aqt"
+
+cirq-web"
+
+cleanlab"
+
+cotengra"
+
+dask-sql"
+
+dataprep"
+
+datasets"
+
+datatile"
+
+dm-haiku"
+
+docarray"
+
+download"
+
+elephant"
+
+evaluate"
+
+filterpy"
+
+formulas"
+
+geoviews"
+
+graphviz"
+
+h5netcdf"
+
+hepstats"
+
+hepunits"
+
+hmmlearn"
+
+httpstan"
+
+hyperopt"
+
+hyperspy"
+
+interpax"
+
+itk-core"
+
+jplephem"
+
+jupytext"
+
+keplergl"
+
+keras-cv"
+
+kerchunk"
+
+kiss-icp"
+
+labelbox"
+
+lalsuite"
+
+levanter"
+
+libpysal"
+
+lightgbm"
+
+lmdeploy"
+
+lonboard"
+
+matplotx"
+
+mne-bids"
+
+natto-py"
+
+nbclient"
+
+nbformat"
+
+nbsphinx"
+
+networkx"
+
+note-seq"
+
+notebook"
+
+ome-zarr"
+
+openmdao"
+
+particle"
+
+pepeline"
+
+pingouin"
+
+pmdarima"
+
+polyaxon"
+
+polyfuzz"
+
+probatus"
+
+pybullet"
+
+pydot-ng"
+
+pygeoogc"
+
+pykalman"
+
+pykdtree"
+
+pymatgen"
+
+pympdata"
+
+pyopenms"
+
+pyro-api"
+
+pyswarms"
+
+pytensor"
+
+rapid-pe"
+
+rasterio"
+
+retworkx"
+
+ruptures"
+
+schedula"
+
+scikeras"
+
+scqubits"
+
+semchunk"
+
+sk-video"
+
+skyfield"
+
+sortedl1"
+
+sqlframe"
+
+tensorrt"
+
+tifffile"
+
+torchcam"
+
+torchgeo"
+
+torchseg"
+
+torchtnt"
+
+tweakwcs"
+
+unitorch"
+
+vectorbt"
+
+woodwork"
+
+xtgeoviz"
+	alchemlyb"
+	arm-pyart"
+	bamboolib"
+	beaker-py"
+	benchpots"
+	biopython"
+	boxdetect"
+	broadbean"
+	catalogue"
+	cirq-core"
+	cirq-ionq"
+	cmweather"
+	contourpy"
+	coqui-tts"
+	dask-expr"
+	datatrove"
+	descartes"
+	diffusers"
+	dmt-learn"
+	duecredit"
+	faiss-cpu"
+	fireducks"
+	formulaic"
+	freqtrade"
+	geopandas"
+	glue-core"
+	gymnasium"
+	harmonypy"
+	hdmf-zarr"
+	heavyball"
+	hollerith"
+	holoviews"
+	hypertune"
+	idaes-pse"
+	inference"
+	ipycanvas"
+	ipyevents"
+	ipykernel"
+	ipyvolume"
+	jax-jumpy"
+	jaxtyping"
+	jiminy-py"
+	keras-hub"
+	keras-nlp"
+	leidenalg"
+	mediapipe"
+	medmodels"
+	mendeleev"
+	ml-dtypes"
+	model2vec"
+	mxnet-mkl"
+	nbclassic"
+	nbconvert"
+	numcodecs"
+	objectory"
+	ome-types"
+	papermill"
+	photutils"
+	pointpats"
+	poliastro"
+	pyam-iamc"
+	pydotplus"
+	pygrinder"
+	pygsheets"
+	pymeshfix"
+	pyneurorg"
+	pyqtgraph"
+	pythreejs"
+	pyvistaqt"
+	qpsolvers"
+	qtconsole"
+	rio-cogeo"
+	rio-tiler"
+	rustworkx"
+	sacrebleu"
+	scikit-rf"
+	sklearndf"
+	sliderule"
+	soundfile"
+	spacy-llm"
+	spaghetti"
+	streamlit"
+	tf-agents"
+	torchdata"
+	traitlets"
+	treescope"
+	verticapy"
+	warp-lang"
+	watermark"
+
+accelerate"
+
+alphashape"
+
+anndata2ri"
+
+artistools"
+
+astroquery"
+
+bert-score"
+
+centerline"
+
+confection"
+
+connectorx"
+
+datashader"
+
+deepspeech"
+
+discretize"
+
+dtw-python"
+
+executorch"
+
+genai-perf"
+
+gin-config"
+
+gwdatafind"
+
+handyspark"
+
+hdf5plugin"
+
+inequality"
+
+inspect-ai"
+
+ipyleaflet"
+
+ipyvuetify"
+
+ipywidgets"
+
+jupyterhub"
+
+jupyterlab"
+
+keras-core"
+
+laion-clap"
+
+matplotlib"
+
+mplfinance"
+
+murmurhash"
+
+nbtoolbelt"
+
+open3d-cpu"
+
+opt-einsum"
+
+optimistix"
+
+pandas-gbq"
+
+pettingzoo"
+
+pointblank"
+
+pygraphviz"
+
+pyreadstat"
+
+python-ivi"
+
+qiskit-aer"
+
+quantulum3"
+
+regionmask"
+
+samplerate"
+
+scikit-fda"
+
+scvi-tools"
+
+shillelagh"
+
+silero-vad"
+
+simplejpeg"
+
+tb-nightly"
+
+tensorflow"
+
+tf-nightly"
+
+tiledbsoma"
+
+tokenizers"
+
+torchaudio"
+
+traittypes"
+
+umap-learn"
+aequilibrae"
+aicsimageio"
+alpaca-eval"
+ansys-units"
+awkward-cpp"
+azureml-rag"
+backtesting"
+batchtensor"
+braindecode"
+cached-path"
+cfelpyutils"
+cirq-google"
+cirq-pasqal"
+cratermaker"
+cuda-python"
+distributed"
+fastcluster"
+geodatasets"
+graphframes"
+haystack-ai"
+herbie-data"
+imagecodecs"
+ipydatagrid"
+ipyparallel"
+joblibspark"
+keras-tuner"
+llama-stack"
+mapclassify"
+ml-wrappers"
+morecantile"
+mplhep-data"
+newspaper4k"
+niworkflows"
+noisereduce"
+numpydantic"
+openfermion"
+opera-utils"
+posebusters"
+pycontrails"
+pynndescent"
+pyopenjtalk"
+pyutils-hep"
+pyviz-comms"
+qcelemental"
+safetensors"
+scikit-lego"
+scikit-misc"
+scipy-stubs"
+segregation"
+sentinelhub"
+sparsestack"
+statsmodels"
+supervisely"
+supervision"
+tensorboard"
+tfa-nightly"
+tfp-nightly"
+torchtyping"
+turbopuffer"
+ultralytics"
+yellowbrick"
+bitsandbytes"
+cloudpathlib"
+cogeo-mosaic"
+coreforecast"
+cupy-cuda11x"
+cupy-cuda12x"
+dask-awkward"
+docling-core"
+ft-pandas-ta"
+great-tables"
+intervaltree"
+itk-numerics"
+jarvis-tools"
+jupyter-core"
+layoutparser"
+lbox-clients"
+liger-kernel"
+lscsoft-glue"
+monai-weekly"
+multiprocess"
+mxbai-rerank"
+nemo-toolkit"
+numdifftools"
+nwbinspector"
+optimum-rbln"
+paddlepaddle"
+pandas-stubs"
+qiskit-terra"
+rosettasciio"
+scikit-image"
+scikit-learn"
+solarfactors"
+spacy-legacy"
+spacy-pkuseg"
+tensorflowjs"
+tfds-nightly"
+titiler-core"
+transformers"
+tritonclient"
+unstructured"
+wetterdienst"
+acryl-sqlglot"
+ai-edge-torch"
+bcolz-zipline"
+correctionlib"
+deepctr-torch"
+dghs-imgutils"
+docling-parse"
+farm-haystack"
+fsspec-xrootd"
+gamma-pytools"
+haystack-bm25"
+hdmf-docutils"
+inference-cli"
+inference-gpu"
+inference-sdk"
+itk-filtering"
+jupyter-bokeh"
+keras-nightly"
+llmcompressor"
+mecab-python3"
+megatron-core"
+mlflow-skinny"
+notebook-shim"
+opencv-python"
+optimum-intel"
+outlines-core"
+pymannkendall"
+python-igraph"
+pytket-qiskit"
+quantify-core"
+rpy2-robjects"
+sentencepiece"
+seqio-nightly"
+stac-pydantic"
+supermorecado"
+tensorflow-io"
+torch-complex"
+torchbiggraph"
+torchsnapshot"
+unbabel-comet"
+uncertainties"
+vega-datasets"
+ai-edge-litert"
+albumentations"
+ansys-dpf-core"
+ansys-edb-core"
+arcgis-mapping"
+autograd-gamma"
+azureml-fsspec"
+azureml-mlflow"
+colpali-engine"
+controlnet-aux"
+dash-cytoscape"
+dask-geopandas"
+dask-histogram"
+databricks-sdk"
+doclayout-yolo"
+faiss-gpu-cu12"
+fasttext-wheel"
+fiftyone-brain"
+gdsfactoryplus"
+ibm-watsonx-ai"
+imageio-ffmpeg"
+ipydatawidgets"
+jupyter-client"
+jupyter-events"
+jupyter-server"
+jupyterlab-git"
+kubric-nightly"
+mkdocs-jupyter"
+neptune-client"
+numpy-groupies"
+oauthenticator"
+optimum-neuron"
+optimum-quanto"
+pandas-summary"
+polars-lts-cpu"
+polars-u64-idx"
+pycausalimpact"
+pydantic-evals"
+pymc-marketing"
+pyportfolioopt"
+recursive-diff"
+scikit-spatial"
+spacy-fastlang"
+spikeinterface"
+tensorflow-cpu"
+tensorflow-gpu"
+tensorflow-hub"
+tf-hub-nightly"
+tf-nightly-cpu"
+tflite-support"
+torch-tensorrt"
+torchx-nightly"
+ansys-dyna-core"
+astropy-healpix"
+azureml-metrics"
+bidsschematools"
+boost-histogram"
+huggingface-hub"
+jina-hubble-sdk"
+jupyter-console"
+lightweight-mmm"
+matplotlib-venn"
+memory-profiler"
+mesh-tensorflow"
+neptune-fetcher"
+nvidia-modelopt"
+nvidia-pytriton"
+open-clip-torch"
+open-radar-data"
+passagemath-cmr"
+passagemath-ecl"
+passagemath-gap"
+passagemath-ntl"
+pinecone-client"
+pyagrum-nightly"
+pyproject2conda"
+quantile-forest"
+scikit-optimize"
+scikit-posthocs"
+scikit-survival"
+tensorflow-text"
+torch-optimizer"
+torchrl-nightly"
+transformations"
+unitycatalog-ai"
+xarray-datatree"
+xarray-einstats"
+ansys-mapdl-core"
+azureml-dataprep"
+cellxgene-census"
+color-operations"
+geojson-pydantic"
+graphdatascience"
+itk-registration"
+itk-segmentation"
+jupyter-cadquery"
+jupyterlite-core"
+lyft-dataset-sdk"
+mne-connectivity"
+mpl-interactions"
+neptune-lightgbm"
+numpy-quaternion"
+nvidia-nccl-cu12"
+openslide-python"
+optuna-dashboard"
+paddlepaddle-gpu"
+passagemath-giac"
+passagemath-glpk"
+passagemath-palp"
+passagemath-pari"
+passagemath-plot"
+power-grid-model"
+qiskit-connector"
+spacy-alignments"
+tensorflow-intel"
+tensorflow-macos"
+ultralytics-thop"
+zipline-reloaded"
+ansys-fluent-core"
+coqui-tts-trainer"
+dm-reverb-nightly"
+jupyter-telemetry"
+jupyterlab-server"
+keras-nlp-nightly"
+matplotlib-inline"
+neural-compressor"
+nvidia-cudnn-cu12"
+nvidia-cufft-cu12"
+onnx-graphsurgeon"
+pandas-datareader"
+passagemath-bliss"
+passagemath-brial"
+passagemath-eclib"
+passagemath-flint"
+passagemath-kenzo"
+passagemath-lcalc"
+passagemath-nauty"
+praat-parselmouth"
+pylibjpeg-libjpeg"
+python-constraint"
+pytorch-optimizer"
+qiskit-algorithms"
+rapidpe-rift-pipe"
+scikit-build-core"
+streamlit-nightly"
+tensorflow-addons"
+tensorflowonspark"
+tf-agents-nightly"
+azure-ml-component"
+basis-set-exchange"
+docling-ibm-models"
+empyrical-reloaded"
+exchange-calendars"
+globus-compute-sdk"
+gymnasium-robotics"
+jupyterlab-widgets"
+nvidia-cublas-cu12"
+nvidia-curand-cu12"
+optuna-distributed"
+optuna-integration"
+passagemath-cddlib"
+passagemath-frobby"
+passagemath-graphs"
+passagemath-groups"
+passagemath-homfly"
+passagemath-kissat"
+passagemath-libecm"
+passagemath-linbox"
+passagemath-lrslib"
+passagemath-maxima"
+passagemath-msolve"
+passagemath-qepcad"
+passagemath-sympow"
+passagemath-topcom"
+pydata-google-auth"
+pylibjpeg-openjpeg"
+qiskit-experiments"
+qiskit-ibm-runtime"
+scikit-learn-extra"
+smqtk-dataprovider"
+spacy-lookups-data"
+spacy-transformers"
+spherical-geometry"
+tensorflow-aarch64"
+tensorflow-cpu-aws"
+tensorflow-lattice"
+tensorflow-ranking"
+widgetsnbextension"
+accelerator-toolbox"
+adaptive-classifier"
+ansys-geometry-core"
+azureml-automl-core"
+espnet-tts-frontend"
+logical-unification"
+mathematics-dataset"
+matplotlib-scalebar"
+openvino-tokenizers"
+passagemath-benzene"
+passagemath-cliquer"
+passagemath-glucose"
+passagemath-meataxe"
+passagemath-modules"
+passagemath-objects"
+passagemath-plantri"
+passagemath-schemes"
+passagemath-sirocco"
+pytorch-forecasting"
+qiskit-ibm-provider"
+sphinxcontrib-katex"
+tensorflow-datasets"
+tensorflow-metadata"
+unstructured-ingest"
+allennlp-pvt-nightly"
+ansys-pyensight-core"
+azureml-opendatasets"
+jupyter-contrib-core"
+liger-kernel-nightly"
+napari-plugin-engine"
+nemo-text-processing"
+nvidia-cusolver-cu12"
+nvidia-cusparse-cu12"
+passagemath-buckygen"
+passagemath-combinat"
+passagemath-coxeter3"
+passagemath-singular"
+pyansys-tools-report"
+pytorch-transformers"
+qiskit-ibmq-provider"
+scikit-learn-intelex"
+tensorflow-federated"
+ai-edge-torch-nightly"
+ansys-mechanical-core"
+haystack-experimental"
+jupyter-collaboration"
+keyphrase-vectorizers"
+napari-plugin-manager"
+nvidia-cuda-nvcc-cu12"
+nvidia-nvjitlink-cu12"
+opencv-contrib-python"
+passagemath-macaulay2"
+passagemath-planarity"
+passagemath-polyhedra"
+passagemath-rankwidth"
+passagemath-symbolics"
+qiskit-ibm-transpiler"
+sentence-transformers"
+tensorflow-io-nightly"
+torch-audiomentations"
+ai-edge-litert-nightly"
+azureml-automl-runtime"
+azureml-dataprep-rslex"
+jupyter-server-mathjax"
+nvidia-cuda-cupti-cu12"
+nvidia-cuda-nvrtc-cu12"
+opencv-python-headless"
+passagemath-categories"
+passagemath-latte-4ti2"
+tensorflow-probability"
+tensorflow-serving-api"
+azureml-dataprep-native"
+connected-components-3d"
+globus-compute-endpoint"
+passagemath-environment"
+passagemath-libbraiding"
+pytorch-pretrained-bert"
+tensorboard-data-server"
+tensorflow-recommenders"
+tensorflow-text-nightly"
+acryl-great-expectations"
+asdf-coordinates-schemas"
+azureml-training-tabular"
+jupyter-server-terminals"
+multiscale-spatial-image"
+neptune-tensorflow-keras"
+nvidia-cuda-runtime-cu12"
+spacy-language-detection"
+ai-edge-quantizer-nightly"
+browsergym-assistantbench"
+flytekitplugins-papermill"
+tensorflow-model-analysis"
+monotonic-alignment-search"
+ansys-grantami-bomanalytics"
+ibm-watson-machine-learning"
+spacy-huggingface-pipelines"
+tensorflow-decision-forests"
+azureml-train-automl-runtime"
+tensorflow-io-gcs-filesystem"
+azureml-inference-server-http" 
+adversarial-robustness-toolbox" 
+opencv-contrib-python-headless"#
+!jupyter-nbextensions-configurator"#
+!passagemath-standard-no-symbolics"%
+#ansys-tools-visualization-interface"&
+$tensorflow-io-gcs-filesystem-nightly"  " " " " " " " 	" 
+" " " " " " " " " " 	 Òôí"	‰ÿH	  ñí"	åéI	 ≤ìí"	Ä“L	 ∑ìí"	˛¥L	 ‹ìí"	Ä÷J	 ïìí"	∞∆H	 ﬁìí"	à÷H	 ±ìí"	é¸H	 Úõí"	§§J	 Óìí"	òêE	 ±ìí"	Ü™E	 …ìí"	»¬G	 Úìí"	Ä F	 ≥ìí"	ÍÊF	 ëìí"	‹ÏG	 îìí"	ÙæC	 €ìí"	ê÷@	 íìí"	–™C	 ◊îí"	†ŒB	 Ôìí"	êºB	 êìí"	»∫B	 Áìí"	¯Ë@	 Óìí"	§™C	 Ëìí"	™åC	 Ôìí"	úÃC	 ´ïí"	™ŒE	 ¡ìí"	˙ÙF Kìí"	ŒêF	 Áìí"	ä‹O aóí"	ˆ˙N	 øìí"	íÑO	 «îí"	»ÙH	 ˜îí"	æÊI	 √ìí"	êJ	 çîí"	ÏöK	 •ìí"	ö‘K	 ƒìí"	¢ÊL	 âìí"	ÙN	 °ìí"	∞ºN	 ˘ìí"	ŒàN	 äìí"	º–O	 üïí"	™∫N	 Üìí"	÷ÜM	 ùìí"	∞∆L	 úìí"	ÃÊL	 ¯ìí"	Ç‹O	 ∫îí"	˛∆O	 ¸ìí"	“öN Cîí"	§ÙN	 ¨ìí"	‚ˆO	 Îìí"	»˛M	 ∫ìí"	∆‚M ôí"	¬ÙM	  ìí"	ÜÙM	 »ìí"	æËL	 ìí"	¶∏L	 ±ñí"	∏†L	 Åîí"	¥ﬁL	 ≤ìí"	ÓæL	 ∆ìí"	™ÄL	 Òìí"	˙ J	 ˜îí"	‰ K Gìí"	»®K	 ìí"	ÜÚK	 ¨ìí"	∆≤I	 ®ñí"	û‡H Rìí"	ú¶H	 Åîí"	íäH	 ﬁìí"	–¯H	 ≤îí"	ÃöH	 ¿ìí"	§I	 ëìí"	úîI	 ºìí"	º‘I	 Êìí"	⁄ÊI	 âîí"	™ºH	 ˆìí"	»ÜH	 úìí"	∆ûH Bìí"	Ë∏G	 Ãìí"	Æ§G 5ìí"	¨ñG	 éìí"	ÊÑF	 …ìí"	ÓæF	 äìí"	⁄àD	 ïìí"	∂ÚD	 ìí"	ÓÜD	 Èìí"	ÿ¥E	 Ïìí"	¬»E *ìí"	ÑÍE mìí"	†éE	 øìí"	÷¥E	 Êìí"	‘∏E	 “òí"	™ˆD	 ¸ìí"	ÑòD	 Æìí"	‘ E	 œìí"	íÚF	 üìí"	ÙˆF	 èïí"	®∆G	 Öìí"	¿≤G	 Âîí"	ÄËF	 ™îí"	¶ƒF $ìí"	∆æF	 ”îí"	Ã‡E	 •ìí"	úöE	 ∞ìí"	∂ÿE	 √ìí"	≤®@ ìí"	–¬@ Xìí"	∫ÇA	 êìí"	‚ÿB	 Üïí"	ö∞B	 “ìí"	ÏÓC ;îí"	¢êC	 Àìí"	∫≤C	 ªîí"	Ç˙C	 ∑ìí"	Æ¯C	 ëìí"	ﬁËC	 ÿìí"	¸‡C	 àïí"	“¢C	 Èìí"	û˛B	 Àìí"	îÊB	 ∑îí"	û»B	 ıìí"	–êB	 Àîí"	˙™B	 ∏îí"	ÚíB îí"	ÓéA	 ◊ìí"	 òA	 Éìí"	¥ÊA	 Ûìí"	êòA	 —ïí"	ŒÍ@	 ⁄ìí"	Ùÿ@	 Ωîí"	™ ¶@	 ’îí"	ˆ Ó@	 í§í"	Ä!˛@	 Óîí"	¶ »A uùí"	Ë ‰A	 Ó§í"	Ù ˆA qïí"	¸  A	 ∂§í"	˛ ¶A	 ⁄úí"	∂!≤A	 ˚ìí"	∏!æA	 ô§í"	ö!ºA	 ¨îí"	ä!ÓA	 π§í"	™!ÊA	 ∑§í"	¨!ÚA	 ◊ìí"	¿!ÏA	 â§í"	º!‡A	 ’§í"	¥!»A	 Èìí"	»!∆A	 ›óí"	⁄!ƒA Dóí"	‹!¿A	 ˛òí"	“!¶A	 —ìí"	Ú!˙@ %öí"	ˆ!‡@	 Íóí"	–!ƒ@	 »òí"	–!Ê@	 «óí"	–!‚@	 Ÿòí"	–!‡@	 Èóí"	‘!¯@	 ˝§í"	ä!“@	 ◊ïí"	ê!÷@ l§í"	∫!Ã@	 ïìí"	∂!¶@ °í"	¶!¥@	 Ñöí"	à!§@	 ª£í"	∏!ä@	 àôí"	‘!à@	 õ§í"	 !ú@	 ÿóí"	 !Æ@	 Îóí"	 !≤@	 âóí"	 !≤@	 ¥ûí"	Ë!®@	 …ìí"	˙!∞@	 Ÿ§í"	¯!Ü@ `ìí"	î"í@ Pîí"	ú"Ù@ îí"	∫"¬@	 Çìí"	Ù"†@	 ”óí"	†#ú@	 ¯ìí"	ƒ#‰@	 ˚ïí"	î#öA óí"	î"ÚA	 §îí"	û"∞B	 €ìí"	Ú"¬B	 ºìí"	ñ#àB	 œìí"	º#ÆB	 ∞ìí"	∆#¬C	 ·ìí"	∆#⁄C	 Ôìí"	™#∆C 0ìí"	Ù"æC	 Ùìí"	Í!ÓC	 ˙ïí"	Ú!‘C oñí"	¯! C Oùí"	 !˛C	 ç§í"	™!ËC H°í"	†!ËC	 ˛°í"	ú! C	 ìïí"	∏!“C	 €§í"	∏!ÆC	 ‘ìí"	å!ÆC	 „îí"	î!¨C	 ¢úí"	®!òC	 ·óí"	¥!†C	 ÿòí"	æ!öC	 ´ìí"	!æC	 èîí"	¸!ÙB	 ßìí"	ƒ!¯B	 æ§í"	Œ!¯B	 •úí"	¬!ÿB	 ﬁîí"	»!÷B	 ˇîí"	∞!ûB	 ¸ìí"	ò!íB tìí"	ò!¿B <òí"	å!∆B	 œóí"	ê!ÿB	 ñöí"	∂!–B 1úí"	Æ!ÄC	 »ñí"	î!ÚB	 Ωóí"	î!ÍB	 Çöí"	¸ ‚B	 Åòí"	Ï ‰B	 ≠ìí"	† ÓB	 æóí"	Ü îC	 ˛ìí"	∆ äC	 Üìí"	‡ §C	 Ãïí"	º ÄD	 Ñìí"	é ˙D	 ’§í"	– ÿD	 —ìí"	Ã ÄE	 éìí"	¯ ‚D	 òïí"	¸ ¥D	 ‰ìí"	– ¶D	  ìí"	Ã ûD	 àöí"	æ!¿D	 ‡ìí"	Œ!ûD	 æ§í"	‡!òD	 Ëñí"	÷!ÑD	 ™îí"	Í!ÇD	 ˘ïí"	“!∂D	 πñí"	⁄!¶D	 ôìí"	ƒ!∫D	 Ÿòí"	¸!»D	 ⁄ñí"	¿!‰D îí"	ñ!ÏD	 óöí"	î!ûE	 ıîí"	†!¶E	 ™ïí"	ﬁ!¢E	 Ù£í"	»!¥E	 ≤îí"	Ó åE	 úìí"	Ü ¥F ïí"	¶ êF	 ´ïí"	 ûF	 Îìí"	ﬁ ¶F	 „ìí"	“ ‘F	 ¸ïí"	¸ F Aìí"	™ ÓF	 ßìí"	¶ ‡F	 ÿìí"	í ÚG	 ûîí"	Ú ‚G	 îîí"	Ó ‹G	 ﬁîí"	º!∏G	 ∞ûí"	º!∫G Mïí"	å!ÆG	 Íñí"	ê!§G Fìí"	ö!ƒG	 °óí"	ú!‚G 3ìí"	™!G	 ÷§í"	§!¸G	 «îí"	æ!“G eöí"	∆!ÓG	 ˛ïí"	Ó!˛G	 àìí"	⁄!úG	 ôïí"	‘!íG	 –ìí"	Ú!ÃF	 Œìí"	Ï!¬F	 ˇòí"	÷!÷F &§í"	‘!¬F	 ·üí"	∫!˙F	 Ÿîí"	æ!ÿF 'ïí"	‹!ÜF	 øõí"	Œ!íF	 î§í"	⁄!¿F	 ◊ìí"	®"≤F	 òìí"	≤"¢F	 ≈ìí"	∆"äF	 Ùìí"	‚"ÜF	 ãìí"	Ï"òF	 •ìí"	Ñ"⁄G	 Çìí"	¥"ÄH	 Íìí"	‘"˛G	 Æìí"	Ó"∞G	 åìí"	ú#åG	 áìí"	Ï#‹G	 ßìí"	Ù#™F	 ‹ìí"	¯#∏E	 Îìí"	™#öE	 ëîí"	ú#∫E	 ¸ìí"	Ä#ÿE	 Ûîí"	ñ"êE	 Äìí"	⁄"†E	 ¶ìí"	‘"‡D }ïí"	ƒ"÷D	 Åìí"	∫#úD	 œìí"	Œ#ÏD	 ≠ìí"	Œ$§E	 Œìí"	∂$àF	 ˚ìí"	‡$ÆF	 ‘ìí"	–$‰F	 ˘ïí"	ä$¶G	 Åìí"	÷$÷G Sòí"	–$¨G +ìí"	≤%ﬁF	 Âìí"	‘%ÆF	 ¿ìí"	≤&îF	 Úìí"	≤&ŒF	 ììí"	»'∆G cìí"	“'òE	 §îí"	‹&ﬁD	 ƒìí"	ƒ&˙D	 ’ìí"	ñ&éB	 Ãìí"	é$êC	 ƒìí"	ÿ$¬B	 Õìí"	ú$‡B	 ÷ìí"	 $ÆB	 »ìí"	é%ñB	 ìí"	ñ%†A	 ∂ìí"	⁄$ÊA	 Éìí"	®$ŒA	 ôìí"	Í$‹@	 ¢îí"	∏$Ë@ Wìí"	å%Ó@	 ˇñí"	Ñ'å@	 –ìí"	¯(å@	 „ìí"	¯(åC	 «ìí"	å+ÑD	 áìí"	∂)ÇE	 ˆìí"	∏(òH	 Ìîí"	î(†K	 Ãîí"	í)ﬁK	 õìí"	ê)‡K	 ªìí"	∞*∆I	 òìí"	¶*§I	 ‰ìí"	–+˛H	 ’ìí"	¶,ÊM	 ¡ìí"	î+ÃM	 ûìí"	¿+ÚL	 ¬ìí"	¿+ÃL	 ñìí"	∂+‹L	 ˜ìí"	û(O	 ≤ìí"	§'–O	 ©ìí"	®&ÙN	 ®ìí"	‡%ÇO	 £ìí"	§$≤N	 £ìí"	™$ñN	 ˚ìí"	Œ$¢N	 áìí"	¯%ÿN	 ïìí"	‰%ŒM	 ‡ìí"	¬%L	 Öìí"	∆&¥M 9ìí"	®'ÍM	 ïìí"	™&úK	 £ìí"	∏%îI	 ∆îí"	ˆ$äH -ìí"	–$öH )îí"	‰$∫I	 Üìí"	Ù$∏K	 ˇìí"	“"¬K	 §ìí"	∞"éK	 ﬂïí"	é"úJ	 ¢ìí"	ÿ"öJ	 ïìí"	‰"îJ	 ¡ìí"	¿#J	 Ñìí"	û#ÍH	 ‚ìí"	"ÄI	 ﬂïí"	Ó"™H	 Àìí"	™"îH	 æñí"	ö"éH	 ™îí"	ä"§H	 „ñí"	™"¯H	 çìí"	¢"˛H	 Òîí"	Ç"¥I	 íìí"	í"ºI	 ˝îí"	Œ"öI ,ìí"	¬"¯I	 Úìí"	∂"“I	 Îòí"	»!÷I	 ¬îí"	∏!éI	 Ìùí"	‹!H	 Çìí"	»!⁄H	 îñí"	 !¢H	 ˜îí"	∫!∞H	 “îí"	ñ!öH	 ‡ìí"	Ù ÚH	 Çîí"	˙ ÚH	 ∞ìí"	‘ úH	 ›öí"	– ≤H	 Òìí"	‹ îI	 ∫ïí"	‹ ÿI	 íìí"	Ù ∆I	 ¢ìí"	é!ÑJ [îí"	ú!íJ Iìí"	ö!ñJ	 áîí"	∂!ñJ	 †ìí"	Œ!ñK	 Øìí"	Ê!ñK	 £ôí"	≤!ÚK	 Öìí"	÷ éK	 ¿îí"	Ç àK	 óìí"	¿ ‘K	 Ñìí"	¿ ¶L	 Ôìí"	⁄ éL	 “ìí"	“ ÜL	 ∑ìí"	‡ ƒL	 ãìí"	∂ L	 ©ìí"	¶ ¬L	 ßîí"	Ü!ûM	 ∂ìí"	å!ûM ^ìí"	¢!¸M	 ıìí"	¶!¬M	 Óìí"	÷!úM	 ƒóí"	™!ÚL	 ëïí"	ò!∏L	 Ÿîí"	™!ñL	 òìí"	∫!íL jîí"	Ü"ÄL ìí"	‰#ˆL Vìí"	⁄#ñM	 ºïí"	Í#⁄M	 µìí"	‚"∫M	 äìí"	ñ"ûM	 çìí"	™"åN	 ûìí"	¢"÷N	 ”ìí"	í#êN	 Óìí"	æ#˛N	 ìí"	ú#‰N	 Öìí"	⁄"ûO	 Íòí"	î"ÜO	 µìí"	ö"ÃO	 ∫ìí"	¶!¢O	 ﬂìí"	¨!ûO	 ªìí"	Ï!ÆO	 √ôí"	¿!∞N	 éìí"	ú!ÜN	 ˙ìí"	≤!ŒN	 úìí"	˛ ÊN	 «ìí"	‡ ƒN	 Åìí"	‡ ¢N	 íîí"	– ÿO |ìí"	˛ ÊO	 ‹ìí"	∂ ÿO ìí"	¨8ÄI îí"	 9†J	 °ìí"	–5àH Qìí"	Í6ÇJ	 …ìí"	*à:	 Çìí"	Ù*»9	  ìí"	Ó*Ï9	 øîí"	¶)Æ:	 õìí"	í(≤;	 —ïí"	¯(Ï>	 Ωìí"	‹(¥?	 Éîí"	¿'¸?	 ìí"	Ó&ñ?	 ¿ìí"	¶&í>	 áïí"	º'Ë>	 éìí"	Æ'∞<	 √ìí"	∫&Œ=	 «ìí"	‘%–=	 Äìí"	§%ö= Yìí"	⁄%à<	 Éìí"	‡$˛< Zîí"	‚$à<	 ¿ìí"	†$à<	 ≥ìí"	í$ä=	 êìí"	“$Æ=	 Œìí"	™$ >	 Ñìí"	¬$à> >ìí"	Ú%í?	 ∞ìí"	“$˛?	 îìí"	Ê#»?	 øîí"	¢#∫?	 äìí"	ˆ#Ä?	 ·ìí"	Ä$‰>	 €ñí"	ä#Ó>	 ¸îí"	Ä#Œ>	 Ïìí"	 "∏>	 Øìí"	∫"∫> ïí"	ê"∂> fìí"	¶" >	 –ìí"	ê"‚>	 Äìí"	‘"™?	 åìí"	˛"“? ïí"	»"Ù?	 ˚ìí"	‘!¯?	 Ëóí"	÷!Ï?	 “óí"	‘!Í?	 Äñí"	Ï!∫?	 ™ìí"	 !Ñ?	 ‰îí"	¨!∞?	 ˚ìí"	æ!ä?	 Ãîí"	æ!à?	 ¬§í"	¶!å?	 Éîí"	Ü!Ä?	 ÷óí"	à!ä? !ìí"	î!∂?	 ù°í"	Ä!ÿ? §í"	í!‹?	 Ûïí"	ú!Ã?	 —ìí"	Æ!ƒ?	 ∂§í"	Æ!Ë? ]ñí"	∂!¯? rïí"	Ú ˛?	 ∆ôí"	Ë Ú?	 ﬂìí"	Ê Í?	 íûí"	Ä!“?	 êóí"	ÿ ¸?	 Ëîí"	¥ ÿ?	 ’ìí"	æ é?	 ≈ìí"	ˆ ñ?	 ‚îí"	Í ú?	 ˘ìí"	Ë †?	 Âîí"	¸ Ë>	 Êìí"	¨ Ë>	 öñí"	¥ ∂>	 ‹îí"	÷ Ñ>	 Ñïí"	‘ ò>	 ÿîí"	é!å>	 ¶ìí"	Ü!ò>	 Òñí"	î!í> xõí"	™!¢>	 óïí"	í!∏>	 Ëîí"	í!†>	 èïí"	ê!¶> sïí"	ä!˛>	 ‹ìí"	∫!‚>	 áòí"	‚!Ù>	 Ÿîí"	Ú!Ú>	 §ìí"	¯!≤> ïí"	ﬁ!≤>	 ö§í"	ƒ!ê>	  ìí"	÷!ê>	 Éóí"	Ï!˙=	 ºóí"	∆!Ê=	 ¨ñí"	∆!¶=	 öñí"	™!¥=	 ≈ìí"	≤!ñ=	 Ωóí"	¿!Ä=	 ˘îí"	Ñ!ä=	 ºîí"	é!∫=	 Çùí"	Ç!¬= vîí"	í!‹=	 °öí"	∏!ﬁ=	 ù†í"	§!Í=	 ∫îí"	æ!¯=	 ‡ìí"	 ∏=	 ¶öí"	Ó ∏=	 π§í"	‰ Ç=	 ˆñí"	Œ Ú<	 —ìí"	∂ ˛< îí"	™ “< 
+ïí"	™!∫<	 Êîí"	í!‡<	 ßìí"	í!‚< óí"	»!∆<	 äóí"	Í!‰<	 ıìí"	Ù!Œ<	 ·¢í"	Í!Ä<	 ùìí"	¯!ê<	  îí"	§"∞<	 ¥ìí"	ÿ"ê<	 Õìí"	⁄"§<	 Åîí"	í"< .ìí"	∏"æ=	 òòí"	à"®=	 ∏ìí"	Ç"Ã=	 ùìí"	à"=	 Àìí"	¥"¸= bìí"	¬#»<	 °ìí"	ú#Ï;	 ƒîí"	∂#ñ:	 ‘ìí"	¥#Ã:	 ´îí"	˛"ﬁ:	 ûïí"	‰"∂:	 ªìí"	Ù"Ë; @ìí"	Æ"‹;	 ¿îí"	¬!∆;	 Õòí"	ê!¢;	 íõí"	î!¬;	 ˆîí"	– ∫;	 ˝ìí"	“ ™;	 Ìïí"	¢ ∂:	 ‘îí"	Í º:	 ãîí"	∞!Æ:	 ∏îí"	Œ!î:	 ”ìí"	⁄!ä:	 ®ìí"	˛!Ï9	 Äìí"	¬!∏9	 öîí"	º!ú9	 Îîí"	ú!¢9  ìí"	î!∏9	 ¬òí"	‘ Œ9 =îí"	– ˆ9 ìí"	∞ §9	 âõí"	¢ ò9	 Œìí"	Ä!Ä9	 óìí"	Æ"∫8	 €ìí"	Ù"¬8	 çòí"	¨"‘8	 ﬁìí"	ä"Ã8	 Æìí"	ö" 9	 Íñí"	∞"‚9	 Êìí"	¯"º9	 Úìí"	ò#Ê9	 ¨ìí"	“#‹9	 õîí"	Ó#¿9	 ≠ìí"	Ë#∆8	 Áìí"	í$¨8	 ®ìí"	ƒ$í8	 ¶ìí"	Œ$ö9	 „ìí"	®$Ü9	 †ìí"	™$ﬁ9	 ììí"	Ù$∂:	 æìí"	∫$ä;	 ñìí"	Ü$ˆ;	 Èìí"	Æ%™:	 ©ìí"	ò'Ã;	 Ëîí"	‚'ê:	 Œìí"	'‰8	 †îí"	Ñ$ú4	 üìí"	‘$5	 ƒìí"	¿%‘6	  ìí"	Œ$Ä7	 Õìí"	˙#“7	 «îí"	ñ#Í7	 ⁄ïí"	∏#⁄7	 Áìí"	é#™7	 ¡ìí"	Ã#à7	 ÿìí"	®#∫6	 —îí"	∆"∫6	 ‚ìí"	ú"Ü6	 ∫ìí"	¶"Ë6	 öìí"	‡"¬7	 »ìí"	¸"ˆ7	 äîí"	∂"Ã7	 ûìí"	ƒ!÷7	 ıîí"	ˆ!é7	 àìí"	∞!‰7	 „îí"	Ä!Ã6 6ìí"	§ ‡6	 Öìí"	Ñ û6	 ìîí"	ä Ü6	 Øìí"	ﬁ ¢6 ìí"	‰ ¶6	 £ïí"	ˆ ñ6	 Öìí"	Ï ä6	 œìí"	†!î6 yìí"	†!“6	 ≥úí"	Ç!ﬁ6	 £ñí"	ò!¯6	 ≥öí"	∞!Ã6	 ˆìí"	ƒ!‹6	 §ïí"	Ú!§6	 ôòí"	˙!ú6	 àìí"	‚!Ê5	 üîí"	‘!Ó5	 äñí"	¯!º5 (ïí"	÷ §5	 ⁄îí"	ﬁ ‘4	 “ìí"	 æ4	 Ãìí"	˙ ö4	 êìí"	ö!Ó4	 ììí"	Í!Ç4	 †ìí"	Í!é4	 πìí"	Í!é4 dìí"	î"⁄4	 ©îí"	Ñ"Ê4	 ¶ïí"	ú"Í4	 Ôîí"	¥"Æ5	 ëñí"	à"¶5	 åìí"	†"Œ5	 Íîí"	™#à5	 ∑ìí"	î#æ5	 ãìí"	ﬁ#‡5	 ∑ìí"	Ù#™5	 §ìí"	Ó#Ü5	 ˜ìí"	∏#‡3	 Äìí"	å#®3	 Âìí"	®#Í2	 óìí"	⁄"¸2 7ìí"	Ù"Œ2	 ∂ìí"	 "¿2	 –îí"	¶"Æ2	 Üìí"	º"¶2	 Áìí"	Æ"Ù2	 •îí"	à"†3	 ﬂìí"	í"¥3	 ôìí"	î"¥3	 Œìí"	 "å3	 ¿îí"	–"®3 Tîí"	–"§3	 Çìí"	¢"Ë3	 √îí"	¥"Ê3 pìí"	à"¸3	 ‹ìí"	˛!˙3	 Áìí"	Ù!–3	 ¯ìí"	ú!î3	 Ïìí"	í ∫3	 ¥ìí"	Ü ¥3	 ƒìí"	Ê Ù2	 øìí"	î!ú2	 ©îí"	ú!Í2	 Íìí"	Í!–2	 £ïí"	ÿ!Œ1	 ‚ìí"	Æ!ñ1	 ‘ïí"	¯ Ó1	 •ìí"	Ä!‡1	 éìí"	˙ Ã1	 ˝ïí"	˛ †1	 ˛ìí"	¨ ‡0	 ’ìí"	∂ “0	 ‡ìí"	Ë ¶0	 ñìí"	º!ñ0	 ±ìí"	∞!Ã0	 Øîí"	Ï!Í0	 óìí"	ñ"Ñ0	 Èìí"	˙"¿0	 ›ìí"	ƒ"‡0	 ˝îí"	–" 0 ìí"	Ï"∞1	 ∏ìí"	Ú#º0 nìí"	æ$Ê0	 ™ìí"	‡$Æ0	 úìí"	‚$ê0	 ∆ìí"	‘%™1	 –ìí"	≤$û1	 ·ìí"	î%∆2	 êîí"	∂%¶2	 €ìí"	»%∫2 Lìí"	ä& 0	 §îí"	¶*Ü3	 Øìí"	Ï(Ù/	 Åìí"	ú'à/	 ãìí"	æ%™-	 ëìí"	‰%º-	 ïìí"	î%ñ. _ìí"	å$¥/	 ñìí"	–#–. iìí"	¬"‹. 2ñí"	Ê" /	 ãìí"	ú"‹/	 ˝ìí"	“!û/	 öìí"	≤!û/	 çìí"	à!‰/	 ëôí"	¨ ÷/	 ©ìí"	ê ®/	 Öìí"	í †/	 ‡ìí"	ò ‰.	 Âìí"	¥ ò.	 √ìí"	ú!¬.	 ◊ìí"	Í!–. 4ìí"	Ë!à.	 åìí"	‘!Ë-	 âîí"	∏!¸-	 ¡îí"	å!Ù-	 ∆ìí"	ñ ¬-	 ˙ìí"	˙ ê-	 Œìí"	‰ ¸,	 ¡ìí"	Œ å,	 êìí"	‡ ¨,	 è¢í"	¶!à, îí"	î!∂,	 Ììí"	é!º,	 ºìí"	Ë!æ,	 Êìí"	Ã!û,	 Ôìí"	Œ!ú, #ìí"	Ã!î,	 †ìí"	‘"∆,	 ûìí"	‚"Ï,	 åìí"	∫"Ñ- gîí"	¨"Ê-	 áìí"	ò#ö-	 „ìí"	¿#Ë-	 Âìí"	ﬁ#-	 ˆìí"	≤#û,	 Üìí"	“#≤,	 ∂ìí"	‹#Æ,	 åìí"	ˆ"¥*	 ¯ìí"	ò"Ï*	 ¯ìí"	 "Æ+	 ¡ìí"	‘"¸+	 †ìí"	⁄"Ó+ "ìí"	˛!¬+ ìí"	¥!å+	 Ìïí"	¿!˙+	 Õìí"	Ï é+	 Õìí"	Ê Ï* ìí"	† ‡*	 ®ìí"	¢ ∫*	 ûìí"	ñ!í* 	ìí"	¢!ä*	 ÷ìí"	™!∆*	 Üîí"	Ú!»*	 àìí"	∆!»)	 “ìí"	⁄!¬)	 áìí"	ñ!‹) ìí"	ú!ÿ) :ïí"	å!Ë)	 ºìí"	Ë ‰) ?ìí"	¸ Ã(	 µìí"	  ¬(	 èìí"	Æ!å(	 Éìí"	§!†(	 ﬁìí"	î!∏( hìí"	Ç!Ã(	 °ìí"	–!“(	 Ùìí"	¯!™(	 ãìí"	⁄!à(	 ÷ìí"	∞"º(	 üìí"	æ"¢(	 òìí"	∫"†(	 Ñìí"	æ"ä(	 Ûìí"	ÿ"ä(	 Ωìí"	û"⁄(	 ˛ìí"	ú"û)	 âìí"	∂"æ)	 »ìí"	ƒ"ˆ)	 ±îí"	‡"¢)	 ñìí"	ˆ$ˆ)	 Ûìí"	‡$î)	 ≈ìí"	§$Ê+	 ‚ìí"	∆$¨$	 ˙ìí"	ñ$¿$	 øìí"	Ç$í'	 ™ìí"	å#¿'	 πìí"	Ê#¢'	 Üïí"	º#ä&	 õìí"	ä#Æ&	 Øìí"	⁄"®&	 ‰ìí"	†"¢& 8ìí"	Æ"ﬁ'	 Ùìí"	Ó!Ñ'	 ´ìí"	!†'	 –ìí"	ö!‡'	 –ìí"	û!¯' kïí"	ä ®' {ìí"	ÿ ú'	 ›ìí"	‹ ™'	 √ìí"	⁄ ‡&	 ¶ìí"	Ó!⁄&	 Äìí"	¬!‘%	 ›ìí"	¥!æ%	 ≠ìí"	ò!¥%	 ¢ìí"	Ó ∞%	 æìí"	Ó ‡$ ìí"	Ü ˆ$	 Æìí"	Ù!»$	 ≈ìí"	Ó"º$	 ‘ìí"	 "Ù%	 üìí"	ÿ"ñ%	 ‘ìí"	Ï"à%	 ≠ìí"	ä#¥%	 ¶îí"	–#¬%	 ∞ìí"	Æ#$	 ∆ìí"	é#Ñ$	 ¢ìí"	î#é$	 ˝ìí"	»#Ñ$	 ∫ìí"	™#∫#	 ≈îí"	∂"¿"	 ∞ìí"	Ñ"ä" ìí"	≤!Œ#	 õìí"	» Ä$	 Âìí"	Ñ æ#	 ˚ìí"	 ò#	 ◊ìí"	÷!∆!	 ˜ìí"	Ë ¶ 	 µìí"	¬!» 	 ììí"	Ë!¬ 	 ›ìí"	∂%˛" Eîí"	æ&ò"	 çìí"	ö*ñ  wìí"	“)»	 ¸ìí"	»&Ê	 •ìí"	Æ"†	 ˇìí"	‹!»	 ÷ìí"	Ä"¥	 †ìí"	Ê#¬	 Ëîí"	Ú"é	 ”îí"	– º	 ˆìí"	¸ ˛	 Áìí"	í ¸	 ıìí"	Ùƒ	 »ìí"	≤¿	 õìí"	™í	 ´ìí"	¢™	 åîí"	†à"	 Ãïí"	÷®$	 ÿìí"	Ó∫$	 çìí"	⁄‘*	 Àìí"	éÙ-	 îí"	∂ˆ,	 ñìí"	Ñ∏)	 µùí"	≤(	 Îûí"	ò“,	 Úìí"	Æ⁄!	 Ôìí"	™Í! /ìí"	¶®"	 æîí"	ºﬁ$	 Øñí"	–˛$	 ßîí"	‘∆%	 ‰ìí"	ÄŒ'	 Ïîí"	÷ˆ&	 ˛ìí"	ﬁ†*	 àìí"	æÜ)	 ﬂìí"	Ëä)	 €ìí"	∂ﬁ)	 ”ìí"	∏ò*	 ±ìí"	†∂*	 ®ìí"	‘∂*	 ·ìí"	ƒ¶*	 πìí"	ºÚ*	 ßîí"	à¸*	 ∆ìí"	‘Ü+	 ‹ìí"	àú*	 åïí"	÷ú-	 Èìí"	Ï⁄, Uìí"	†¨,	 ¢ìí"	⁄ƒ,	 Ñìí"	ÙÍ,	 ˘ìí"	í®-	 œìí"	‹∆-	 Úóí"	òö.	 ãìí"	æ /	 …ïí"	¢˙-	 Õìí"	å 5	 ≥ïí"	‘ƒ1	 ﬁìí"	≤∫1	 ˇìí"	Ñº0	 œìí"	–Ê0 Jìí"	¿ˆ0	 ¨ìí"	Ç¿1	 °ìí"	˛‰1	 ˙ìí"	∫Ó1	 ⁄ìí"	öƒ1	 Êìí"	‰Ê1	 Ìîí"	˛¿2 zìí"	Ùæ2	 Óîí"	éÜ2	 ˇìí"	ºŒ2	 ≤ìí"	ä‹2	 …ìí"	∆ê3	 ¥ïí"	‡¢3	 Àìí"	º˛3	 îìí"	ä‹3	 Éìí"	¸∞3	 ˙ìí"	†û2	 Ïìí"	ä∫2	 Äîí"	é∂4	 Öìí"	¢‰4	 ©îí"	¶Œ4	 äìí"	Úÿ4 ìí"	Ãﬁ4	 Æìí"	∏ö5	 ¬ìí"	Íˆ5	 âìí"	‰¬5	 ≠ïí"	û‰6	 êìí"	¿Ã6	 ˘ìí"	™Æ7	 ±ìí"	™7	 öîí"	Ó‰7	 µïí"	‘7	 ‚ìí"	¶Ó7 ïí"	ñå7	 Ìîí"	äú7	 ªîí"	ú‡7	 Æìí"	¢‡7	 ‰îí"	ò¯6	 îìí"	Êö6	 ≠ïí"	∏†4	 ¨ìí"	ºŒ4	 Ïìí"	àÊ9	 ‚ìí"	‡∆8	 Ωìí"	¿å8	 ¯ìí"	‘à8 \îí"	¸†8	 úîí"	∞ñ9	 Ωìí"	¶Í9 ìí"	ú∏9	 èìí"	∞∆:	 Ùìí"	–à:	 ùïí"	åÊ:	 Òñí"	Ñ§;	 ªïí"	¯º;	 ùîí"	≤˛;	 éìí"	ˆÜ:	 éìí"	‰í:	 üìí"	ºû:	 ∏ìí"	®‰:	 ®ìí"	ñÙ<	 ∏ìí"	ÿö=	 Æìí"	§“<  ìí"	‚ö<	 …ìí"	ñ™<	 ¯ìí"	∫‡<	 ¥ïí"	‚‡<	 ¬ìí"	»ñ<	 ‡ìí"	 ƒ=	 ıìí"	‰Ê=	 úìí"	îä=	 µìí"	™Ï=	 ≈îí"	ûæ> ~ìí"	Ïﬁ>	 ”ùí"	Ñ®?	 ˜ìí"	¸Ä@ ìí"	éÇ?	 ≥ìí"	ò˛?	 ˙ìí"	à‘?	 ´îí"	êÄ>	 ¬ìí"	¿¥> Nïí"	Ä¸?	 Òìí"	Ùò<	 ‰îí"	÷Œ=	 ⁄îí"	úº?	 èìí"	¶»>	 ∏ïí"	éÏ<	 ﬂîí"	“û<	 éúí"	∞	÷5	 ›òí"	Ú
+í7	 ∂ñí"	Æ	⁄7	 Ûìí"	¶ÿ5	 Ûìí"	≤∆2	 ¥ñí"	Ú¿0	 πìí"	§à0	 ≥îí"	˛¢0	 ≤îí"	åö2	 Ïìí"	‘ 1	 ôìí"	¬¬9	 Ùìí"	ˆ‹9	 Ÿóí"	ÑÄ;	 ìóí"	˛æ;	 ÷îí"	‰∆:	 óìí"	Ñ¿:	 ¥îí"	‡¶;	 òìí"	∫–<	 èñí"	⁄∏<
