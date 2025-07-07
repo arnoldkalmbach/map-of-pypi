@@ -7,6 +7,7 @@ import umap
 from sentence_transformers import SentenceTransformer
 from typing import Any
 from mock_data_export import export_mock_data
+import scipy.sparse
 
 # Parses the package name from a requires_dist string
 PACKAGE_RE = r"^\s*([A-Za-z0-9][-.\w]*(?:\[[A-Za-z0-9_\-.,]+\])?)"
@@ -41,13 +42,28 @@ def plot_graph(G: nx.DiGraph, pos: dict[str, tuple[float, float]]):
 
 def get_embeddings(descriptions: list[str], model_name: str) -> np.ndarray:
     model = SentenceTransformer(model_name)
-    return model.encode(descriptions, show_progress_bar=True)
+    descriptions_notnull = [
+        d if d else "" for d in descriptions
+    ]
+    return model.encode(descriptions_notnull, show_progress_bar=True)
+
+def propagate_neighbor_embeddings(G: nx.DiGraph, embeddings: np.ndarray) -> np.ndarray:
+    adjacency = nx.adjacency_matrix(G).T             # In-neighbors = Things that depend on this package
+    adjacency = adjacency + scipy.sparse.eye(adjacency.shape[0]) # Add self-loops so we don't forget our own embedding
+    sums = adjacency.dot(embeddings)
+    row_sums = np.array(adjacency.sum(axis=1)).ravel()
+    embeddings_new = sums / row_sums[:, None]
+    return embeddings_new
 
 
-def get_umap_embeddings(descriptions: list[str], umap_kwargs: dict[str, Any] = dict()) -> np.ndarray:
-    embeddings = get_embeddings(descriptions, model_name='all-MiniLM-L6-v2')
+def get_umap_embeddings(descriptions: list[str], G: nx.DiGraph, propagation_steps: int = 1, umap_kwargs: dict[str, Any] = dict()) -> np.ndarray:
+    initial_embeddings = get_embeddings(descriptions, model_name='all-mpnet-base-v2')
     reducer = umap.UMAP(**umap_kwargs)
-    return reducer.fit_transform(embeddings).astype(float)
+
+    propagated_embeddings = initial_embeddings.copy()
+    for _ in range(propagation_steps):
+        propagated_embeddings = propagate_neighbor_embeddings(G, propagated_embeddings)
+    return initial_embeddings, propagated_embeddings, reducer.fit_transform(propagated_embeddings).astype(float)
 
 
 if __name__ == "__main__":
@@ -61,7 +77,7 @@ if __name__ == "__main__":
             pl.col('num_downloads').cast(pl.Int64)
         )
         .sort('num_downloads', descending=True)
-        .head(500)
+        .head(2500)
     )
     print(f"Loaded {len(df)} packages")
 
@@ -70,14 +86,8 @@ if __name__ == "__main__":
 
     # Prune dependencies on nodes outside the list
     edges = edges.join(nodes[['name']], left_on='requires_packages', right_on='name', how='inner')
-    all_packages_with_edges = pl.concat((edges['name'], edges['requires_packages'])).unique()
+    all_packages_with_edges = pl.concat((edges['name'], edges['requires_packages'])).unique(maintain_order=True)
     nodes = nodes.join(pl.DataFrame([all_packages_with_edges]), on='name')
-
-    print("Calculating embeddings...")
-    description_embeddings = get_umap_embeddings(
-        nodes['description'].to_list(),
-        umap_kwargs=dict(n_components=1)
-    )
 
     G = nx.DiGraph()
     G.add_nodes_from(nodes['name'])
@@ -89,13 +99,20 @@ if __name__ == "__main__":
     G.add_edges_from(edge_data)
     print(f"Graph created with {G.number_of_nodes()} nodes and {G.number_of_edges()} edges")
 
+    print("Calculating embeddings...")
+    description_embeddings, propagated_embeddings, umap_embeddings = get_umap_embeddings(
+        nodes['description'].to_list(),
+        G,
+        umap_kwargs=dict(n_components=2)
+    )
+
     print("Calculating layout...")
     # Initialize the nodes where the y-coordinate is the number of depending packages
     # And the x-coordinate is the embedding of the package description
     initial_pos = {
-        node: (description_embeddings[i, 0], G.in_degree(node)) for i, node in enumerate(G.nodes())
+        node: (umap_embeddings[i, 0], umap_embeddings[i, 1]) for i, node in enumerate(G.nodes())
     }
-    pos = nx.spring_layout(G, k=1, iterations=100, pos=initial_pos)
+    pos = nx.spring_layout(G, k=1, iterations=10, pos=initial_pos)
 
     print(f"Layout calculated for {len(pos)} nodes")
 
