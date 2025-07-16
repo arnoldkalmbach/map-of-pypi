@@ -8,6 +8,7 @@ from sentence_transformers import SentenceTransformer
 from typing import Any
 from mock_data_export import export_mock_data
 import scipy.sparse
+import hdbscan
 
 # Parses the package name from a requires_dist string
 PACKAGE_RE = r"^\s*([A-Za-z0-9][-.\w]*(?:\[[A-Za-z0-9_\-.,]+\])?)"
@@ -31,13 +32,21 @@ def min_weighted_distance_to_leaf(G: nx.DiGraph, weight='weight'):
 
     return nx.multi_source_dijkstra_path_length(rev_G, leaves)
 
-def plot_graph(G: nx.DiGraph, pos: dict[str, tuple[float, float]]):
+def plot_graph(G: nx.DiGraph, pos: dict[str, tuple[float, float]], cluster_labels: dict[str, int], mesh: tuple[np.ndarray, np.ndarray, np.ndarray]):
     fig, ax = plt.subplots(figsize=(16, 9))
 
-    distance_to_leaf = min_weighted_distance_to_leaf(G)
-    node_colors = [np.log1p(distance_to_leaf.get(node, 0)) for node in G.nodes()]
+    # Filter to only show top 1000 nodes
+    nodes_to_keep = list(G.nodes())[:1000]
+    G_plot = G.subgraph(nodes_to_keep)
+    pos_plot = {
+        node: (pos[node][0], pos[node][1]) for node in nodes_to_keep
+    }
+
+    # distance_to_leaf = min_weighted_distance_to_leaf(G)
+    node_colors = [cluster_labels.get(node, 0) for node in G_plot.nodes()]
             
-    nx.draw(G, pos=pos, node_size=50, width=0.5, alpha=0.7, with_labels=True, ax=ax, node_color=node_colors, cmap=plt.cm.viridis)
+    nx.draw(G_plot, pos=pos_plot, node_size=50, width=0.5, alpha=0.7, with_labels=True, ax=ax, node_color=node_colors, cmap=plt.cm.tab10)
+    plt.contourf(mesh[0], mesh[1], mesh[2], cmap=plt.cm.tab10)
     plt.show()
 
 def get_embeddings(descriptions: list[str], model_name: str) -> np.ndarray:
@@ -77,7 +86,6 @@ if __name__ == "__main__":
             pl.col('num_downloads').cast(pl.Int64)
         )
         .sort('num_downloads', descending=True)
-        .head(2500)
     )
     print(f"Loaded {len(df)} packages")
 
@@ -103,16 +111,38 @@ if __name__ == "__main__":
     description_embeddings, propagated_embeddings, umap_embeddings = get_umap_embeddings(
         nodes['description'].to_list(),
         G,
-        umap_kwargs=dict(n_components=2)
+        umap_kwargs=dict(n_components=2, n_neighbors=50, min_dist=0.0, random_state=42)
+    )
+    clusterer = hdbscan.HDBSCAN(
+        min_samples=3,
+        min_cluster_size=10,
+        prediction_data=True,
+    )
+
+    clusterer = clusterer.fit(umap_embeddings)
+    cluster_labels = clusterer.labels_
+    
+    minx, maxx = umap_embeddings[:, 0].min(), umap_embeddings[:, 0].max()
+    miny, maxy = umap_embeddings[:, 1].min(), umap_embeddings[:, 1].max()
+    mesh_x, mesh_y = np.meshgrid(np.linspace(minx, maxx, 100), np.linspace(miny, maxy, 100))
+    mesh_labels, _ = hdbscan.approximate_predict(clusterer, np.vstack([mesh_x.flatten(), mesh_y.flatten()]).T)
+    mesh_labels = mesh_labels.reshape(mesh_x.shape).astype(float)
+    mesh_labels[mesh_labels == -1] = np.nan
+
+    print(
+        pl.Series(cluster_labels).value_counts().to_dicts()
     )
 
     print("Calculating layout...")
-    # Initialize the nodes where the y-coordinate is the number of depending packages
-    # And the x-coordinate is the embedding of the package description
     initial_pos = {
         node: (umap_embeddings[i, 0], umap_embeddings[i, 1]) for i, node in enumerate(G.nodes())
     }
-    pos = nx.spring_layout(G, k=1, iterations=10, pos=initial_pos)
+    cluster_labels = {
+        node: cluster_labels[i] for i, node in enumerate(G.nodes())
+    }
+    root = list(G.nodes())[0]
+    pos = initial_pos
+    # pos = nx.spring_layout(G, k=1, iterations=3, pos=initial_pos, fixed=[root])
 
     print(f"Layout calculated for {len(pos)} nodes")
 
@@ -124,5 +154,4 @@ if __name__ == "__main__":
         data_version='v2',
     )
 
-    plot = plot_graph(G, pos)
-    
+    plot = plot_graph(G, pos, cluster_labels=cluster_labels, mesh=(mesh_x, mesh_y, mesh_labels))
