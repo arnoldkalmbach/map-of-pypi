@@ -1,7 +1,6 @@
 from pathlib import Path
 from typing import Sequence
 import json
-import math
 import networkx as nx
 from networkx.drawing.nx_pydot import write_dot
 import subprocess
@@ -9,48 +8,20 @@ import tempfile
 import os
 import shutil
 import geopandas as gpd
+from pandas.core.internals.construction import convert_object_array
 from shapely.geometry import Point, Polygon
 import numpy as np
+import polars as pl
+from scipy.spatial import ConvexHull
+
 
 # Bounding box (roughly around San Francisco)
 MIN_LON, MAX_LON = -122.55, -122.25
 MIN_LAT, MAX_LAT = 37.65, 37.95
 
-BBox = tuple[float, float, float, float]
 
 
-def _remap_positions_to_bbox(
-    pos: dict[str, tuple[float, float]],
-    bbox: BBox = (MIN_LON, MAX_LON, MIN_LAT, MAX_LAT),
-) -> dict[str, tuple[float, float]]:
-    """Linearly rescale arbitrary 2-D layout `pos` into lon/lat bbox.
-
-    Returns a mapping name -> (lon, lat).
-    """
-    min_lon, max_lon, min_lat, max_lat = bbox
-    lon_range = max_lon - min_lon
-    lat_range = max_lat - min_lat
-
-    xs = [p[0] for p in pos.values()]
-    ys = [p[1] for p in pos.values()]
-    min_x, max_x = min(xs), max(xs)
-    min_y, max_y = min(ys), max(ys)
-
-    # Avoid division by zero in pathological cases
-    range_x = (max_x - min_x) or 1e-6
-    range_y = (max_y - min_y) or 1e-6
-
-    coords: dict[str, tuple[float, float]] = {}
-    for name, (x, y) in pos.items():
-        x_01 = (x - min_x) / range_x
-        y_01 = (y - min_y) / range_y
-        lon = min_lon + x_01 * lon_range
-        lat = min_lat + y_01 * lat_range
-        coords[name.lower()] = (lon, lat)
-    return coords
-
-
-def _export_graph(G: nx.DiGraph, coords: dict[str, tuple[float, float]], out_path: Path) -> None:
+def _export_graph(G: nx.DiGraph, coords: np.ndarray, out_path: Path) -> None:
     """Write `G` to `out_path` in DOT format using networkx → pydot.
 
     Node identifiers are lowered. Each node gets an attribute `l="lon,lat"` used
@@ -60,25 +31,19 @@ def _export_graph(G: nx.DiGraph, coords: dict[str, tuple[float, float]], out_pat
     G_lower = nx.relabel_nodes(G, lambda n: n.lower(), copy=True)
 
     # Attach coordinate attribute expected by front-end
-    for node in G_lower.nodes:
-        lon, lat = coords[node]
+    for node, (lon, lat) in zip(G_lower.nodes, coords):
         G_lower.nodes[node]["l"] = f"{lon},{lat}"
 
     write_dot(G_lower, str(out_path))
 
 
 def _export_names(
-    package_names: Sequence[str],
-    coords: dict[str, tuple[float, float]],
+    node_data: pl.DataFrame,
     names_dir: Path,
 ) -> None:
     letter_map: dict[str, list] = {}
-    for name in package_names:
+    for name, (lon, lat) in node_data[['name', 'coords']].iter_rows(named=False):
         lname = name.lower()
-        lon, lat = coords.get(lname, (None, None))
-        if lon is None:
-            # Skip names not found in coords
-            continue
         first = lname[0]
         letter_map.setdefault(first, []).append([name, lon, lat])
 
@@ -268,90 +233,56 @@ def _generate_vector_tiles(
             os.unlink(temp_mbtiles)
 
 
-def _create_borders_gdf(coords: dict[str, tuple[float, float]]) -> gpd.GeoDataFrame:
-    """Create borders GeoDataFrame that encompasses all package coordinates."""
-    # Calculate bounding box from actual coordinates
-    all_lons = [c[0] for c in coords.values()]
-    all_lats = [c[1] for c in coords.values()]
-    
-    if not all_lons or not all_lats:
-        # Fallback to default bbox
-        min_lon, max_lon = MIN_LON, MAX_LON
-        min_lat, max_lat = MIN_LAT, MAX_LAT
-    else:
-        min_lon, max_lon = min(all_lons), max(all_lons)
-        min_lat, max_lat = min(all_lats), max(all_lats)
-        
-        # Add padding (5% of range)
-        lon_range = max_lon - min_lon
-        lat_range = max_lat - min_lat
-        padding_lon = lon_range * 0.05
-        padding_lat = lat_range * 0.05
-        
-        min_lon -= padding_lon
-        max_lon += padding_lon
-        min_lat -= padding_lat
-        max_lat += padding_lat
-    
-    # Create polygon geometry
-    polygon = Polygon([
-        (min_lon, min_lat),
-        (max_lon, min_lat),
-        (max_lon, max_lat),
-        (min_lon, max_lat),
-        (min_lon, min_lat)
-    ])
-    
-    data = [{
-        'fill': '#516ebc',  # Color that matches the theme
-        'geometry': polygon
-    }]
-    
-    gdf = gpd.GeoDataFrame(data, crs='EPSG:4326')
-    gdf.index = [0]  # Set id to 0
-    return gdf
+def _create_borders_gdf(label_polygons: dict[int, np.ndarray]) -> gpd.GeoDataFrame:
+    """Create borders GeoDataFrame with convex hull polygons for each cluster."""
+    borders = []
+    for cluster_label, points in label_polygons.items():
+
+        poly = Polygon(points).buffer(0.01)
+        borders.append({
+            'fill': '#516ebc',  # Color that matches the theme
+            'id': int(cluster_label),  # Use cluster_label as the border ID
+            'geometry': poly
+        })
+
+    return gpd.GeoDataFrame(borders, crs='EPSG:4326', geometry='geometry')
 
 
-def _create_places_gdf(coords: dict[str, tuple[float, float]]) -> gpd.GeoDataFrame:
-    """Create places GeoDataFrame with country labels."""
-    all_lons = [c[0] for c in coords.values()]
-    all_lats = [c[1] for c in coords.values()]
-    center_lon = sum(all_lons) / len(all_lons)
-    center_lat = sum(all_lats) / len(all_lats)
+def _create_places_gdf(polygons: dict[int, np.ndarray]) -> gpd.GeoDataFrame:
+    """Create places GeoDataFrame with Point features at cluster centroids."""
+    places = []
+    for cluster_label, polygon in polygons.items():
+        poly = Polygon(polygon)
+        centroid = poly.centroid
+        print(cluster_label, centroid)
+            
+        places.append({
+            'name': f'Cluster {cluster_label}',
+            'labelId': f'cluster_{cluster_label}',
+            'symbolzoom': 8,  # Appropriate zoom level for labels
+            'geometry': centroid
+        })
     
-    data = [{
-        'name': 'Python Package Land',
-        'labelId': 'pypyland',
-        'symbolzoom': 3,
-        'geometry': Point(center_lon, center_lat)
-    }]
-    
-    gdf = gpd.GeoDataFrame(data, crs='EPSG:4326')
-    gdf.index = [0]  # Set id to 0
-    return gdf
+    return gpd.GeoDataFrame(places, crs='EPSG:4326', geometry='geometry')
 
 
-def _export_places(coords: dict[str, tuple[float, float]], out_path: Path) -> None:
+def _export_places(polygons: dict[int, np.ndarray], out_path: Path) -> None:
     """Export places GeoDataFrame to GeoJSON."""
-    gdf = _create_places_gdf(coords)
+    gdf = _create_places_gdf(polygons)
     gdf.to_file(out_path, driver='GeoJSON')
 
 
-def _create_borders_geojson(coords: dict[str, tuple[float, float]], out_path: Path) -> None:
-    """Create borders.geojson that encompasses all package coordinates."""
-    gdf = _create_borders_gdf(coords)
-    # Add explicit ID column that geopandas will use as feature ID
-    gdf['id'] = gdf.index
+def _create_borders_geojson(label_polygons: dict[int, np.ndarray], out_path: Path) -> None:
+    """Create borders.geojson with convex hulls for each cluster."""
+    gdf = _create_borders_gdf(label_polygons)
     gdf.to_file(out_path, driver='GeoJSON')
 
 
 def export_mock_data(
     G: nx.DiGraph,
-    pos: dict[str, tuple[float, float]],
-    package_names: Sequence[str],
-    *,
+    node_data: pl.DataFrame,
+    label_polygons: dict[int, np.ndarray],
     data_version: str = "v2",
-    bbox: BBox | None = None,
     root: Path | None = None,
 ) -> None:
     """Export graph + layout into mock-data file structure.
@@ -360,10 +291,8 @@ def export_mock_data(
     ----------
     G : nx.DiGraph
         The graph of dependencies.
-    pos : mapping name -> (x, y)
-        Coordinates from whichever layout algorithm you used.
-    package_names : sequence[str]
-        The **original-case** package names in the dataset (used for search index).
+    node_data : pl.DataFrame
+        The node data, including the coordinates and cluster labels.
     data_version : str, default "v2"
         Sub-directory under `public/mock-data/` to write files to.
     bbox : tuple[lon_min, lon_max, lat_min, lat_max] | None
@@ -381,22 +310,48 @@ def export_mock_data(
     graphs_dir.mkdir(parents=True, exist_ok=True)
 
     # Take arbitrary XY coords and map them to possible lon/lat coords
-    coords = _remap_positions_to_bbox(pos, bbox or (MIN_LON, MAX_LON, MIN_LAT, MAX_LAT))
+    target_minx = MIN_LON
+    target_miny = MIN_LAT
+    range_x = (MAX_LON - MIN_LON)
+    range_y = (MAX_LAT - MIN_LAT)
+
+    data_minx = node_data['umap_embedding'].arr.get(0).min()
+    data_miny = node_data['umap_embedding'].arr.get(1).min()
+    data_maxx = node_data['umap_embedding'].arr.get(0).max()
+    data_maxy = node_data['umap_embedding'].arr.get(1).max()
+    data_range_x = data_maxx - data_minx
+    data_range_y = data_maxy - data_miny
+
+    def _xy_to_lonlat(xy: list[float]) -> tuple[float, float]:
+        return (
+            (xy[0] - data_minx) / data_range_x * range_x + target_minx,
+            (xy[1] - data_miny) / data_range_y * range_y + target_miny
+        )
+
+    node_data = node_data.with_columns(
+        pl.col('umap_embedding').map_elements(_xy_to_lonlat, return_dtype=pl.List(pl.Float64)).cast(pl.Array(pl.Float64, 2)).alias('coords')
+    )
 
     # Save the dot graph: Used for rendering edges
-    _export_graph(G, coords, graphs_dir / "0.graph.dot")
+    _export_graph(G, node_data['coords'].to_numpy(), graphs_dir / "0.graph.dot")
 
     # Save the names json files: Used for searching
-    _export_names(package_names, coords, names_dir)
+    _export_names(node_data['name', 'coords'], names_dir)
 
-    # Save the places geojson file: Identifies the centroid of each cluster ('country')
-    # For now, we just have a single cluster in the map
-    _export_places(coords, mock_dir / "places.geojson")
 
-    # Save the borders geojson file: Used for rendering the boundaries of each cluster
-    # For now we just have a single cluster, so this is the min, max, lon, lat extent
-    _create_borders_geojson(coords, mock_dir / "borders.geojson")
+    # Save the borders geojson file: Polygon boundaries for each cluster
+    translated_polygons = {}
+    for label, polygon in label_polygons.items():
+        print(label)
+        translated_polygons[label] = np.array([_xy_to_lonlat(pt) for pt in polygon])
 
-    # Save the coordinates of each indivdual node as PBF features
+    # Save the places geojson file: Point features at cluster centroids for labels
+    _export_places(translated_polygons, mock_dir / "places.geojson")
+
+    _create_borders_geojson(translated_polygons, mock_dir / "borders.geojson")
+
+    # Save the coordinates of each individual node as PBF features
     # Used for rendering the packages (when you zoom in enough) 
+    coords = {row[0].lower(): row[1] for row in node_data[['name', 'coords']].iter_rows()}
+    package_names = node_data['name'].to_list()
     _generate_vector_tiles(coords, package_names, G, mock_dir / "points")
